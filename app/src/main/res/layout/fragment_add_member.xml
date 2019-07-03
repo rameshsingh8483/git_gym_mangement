@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.AddMemberFragment">
+    
+   <android.support.v4.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="@dimen/_40sdp"
+       >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="@dimen/_20ssp"
+        >
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="200sp"
+                    android:text="Add image"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="25sp"/>
+
+                <ImageView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="200sp"
+                    android:layout_marginBottom="10sp"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/iv_user"
+
+                    />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/ic_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:src="@drawable/ic_camera"
+                    android:tint="@color/whiteColor"
+
+                    />
+                <LinearLayout
+                    android:id="@+id/ll_add_image"
+                    android:padding="20sp"
+                    android:background="@drawable/cirecle_shape"
+                    android:layout_width="160sp"
+                    android:layout_height="160sp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Image"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="25sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="14sp"
+                        />
+
+
+                    <ImageView
+                        android:id="@+id/iv_add_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_add"
+                        android:tint="@color/colorAccent"
+
+                        />
+
+
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Information"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_15ssp"
+            android:layout_gravity="center"
+            android:gravity="center"
+          
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/join_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Joining Date"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+
+        <TextView
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fees"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_15ssp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_20ssp"
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/full_fees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Fee"
+            android:inputType="number"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/pay_fees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pay Fee"
+            android:inputType="number"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/pending_fees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pending Fee"
+            android:inputType="number"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:weightSum="2"
+            >
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="0sp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/round"
+                android:text="Add Member"
+                android:textColor="@color/whiteColor"
+
+
+                />
+
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0sp"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round"
+                android:text="Cancel"
+                android:textColor="@color/whiteColor"
+
+
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+   </android.support.v4.widget.NestedScrollView>
+
+
+
+</FrameLayout>

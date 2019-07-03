@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="@dimen/_40sdp"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:layout_height="150sp"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="5sp"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+
+            app:cardCornerRadius="5sp"
+            >
+
+            <LinearLayout
+                android:id="@+id/lin_total"
+                android:layout_margin="5sp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="#E4EA6D"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Menber"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+                <TextView
+                    android:id="@+id/totol_acc"
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="5sp"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardCornerRadius="5sp"
+            >
+
+            <LinearLayout
+                android:id="@+id/lin_month_user"
+                android:layout_margin="5sp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@color/colorAccent"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last Month Register User"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+                <TextView
+                    android:id="@+id/month_register"
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="5sp"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+
+            app:cardCornerRadius="5sp"
+            >
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:layout_height="150sp"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="5sp"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+
+            app:cardCornerRadius="5sp"
+            >
+
+            <LinearLayout
+
+                android:id="@+id/lin_exp_week"
+                android:layout_margin="5sp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="#F3AE4E"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exp in 7 days"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+                <TextView
+                    android:id="@+id/exp_weak"
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="5sp"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardCornerRadius="5sp"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/lin_exp_month"
+                android:background="@color/gray"
+                android:layout_margin="5sp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exp in This Month"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+                <TextView
+                    android:id="@+id/exp_month"
+                    android:layout_marginTop="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+
+                    />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:layout_height="150sp"
+            android:layout_marginTop="30dp"
+
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="5sp"
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardCornerRadius="5sp"
+                >
+
+                <LinearLayout
+
+                    android:id="@+id/lin_full_pay"
+                    android:layout_margin="5sp"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="#1C17F0"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:tint="@color/colorAccent"
+                        android:visibility="gone"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Full Pay"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/full_pay_count"
+                        android:layout_marginTop="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+
+                        />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                app:cardCornerRadius="5sp"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/lin_half_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="5sp"
+                    android:background="#32F017"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:tint="@color/colorAccent"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="Half Fees Pay"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/half_pay_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+
+                        />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:layout_height="150sp"
+
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="5sp"
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardCornerRadius="5sp"
+                >
+
+                <LinearLayout
+
+                    android:id="@+id/delete_member"
+                    android:layout_margin="5sp"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="#17C5F0"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:tint="@color/colorAccent"
+                        android:visibility="gone"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delete Member"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/delete_member_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:singleLine="true"
+
+                        />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    </ScrollView>
+
+</FrameLayout>

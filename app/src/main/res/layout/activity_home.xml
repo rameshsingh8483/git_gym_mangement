@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+               <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                   android:id="@+id/toolbar"
+                   android:layout_width="match_parent"
+                   android:layout_height="?attr/actionBarSize"
+                   android:background="?attr/colorPrimary"
+                   android:elevation="4dp"
+                   app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                   app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:drawableTint="@color/whiteColor"
+                           android:gravity="center|start"
+                           android:text="Members"
+                           android:textColor="@color/whiteColor"
+                           android:textSize="@dimen/_17ssp"
+                           />
+
+
+               </android.support.v7.widget.Toolbar>
+
+
+
+       </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+    </LinearLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/whiteColor"
+            app:itemIconTint="@color/mainColor"
+            app:itemTextColor="@color/cardview_dark_background"
+            app:menu="@menu/main_menu"
+            android:visibility="gone"
+ />
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tablauout"
+        app:tabRippleColor="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/cardview_dark_background"
+        android:layout_alignParentBottom="true"
+        app:tabGravity="center"
+        android:background="@color/menuColor"
+
+
+        />
+
+
+
+</RelativeLayout>
