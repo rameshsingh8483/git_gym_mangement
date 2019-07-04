@@ -26,5 +26,8 @@ public interface UserService {
     List<User> fullPayUser() ;
 
 
+    List<User> pendingPayUser() ;
+
+
 
 }

@@ -12,6 +12,8 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
+
+
     @Query("SELECT * FROM user")
     List<User> getAll();
 
@@ -24,6 +26,11 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE payfees = totalfees")
     List<User> fullpayUser();
+
+
+
+    @Query("SELECT * FROM user WHERE payFees_status = 0")
+    List<User> pendingPayUser();
 
 
     @Insert

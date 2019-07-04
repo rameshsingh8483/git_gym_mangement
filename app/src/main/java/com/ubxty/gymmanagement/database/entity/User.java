@@ -42,6 +42,18 @@ public class User implements Serializable {
     private String join_month;
 
 
+    @ColumnInfo(name = "payFees_status")
+    private String payFees_status;
+
+
+    public String getPayFees_status() {
+        return payFees_status;
+    }
+
+    public void setPayFees_status(String payFees_status) {
+        this.payFees_status = payFees_status;
+    }
+
     public String getJoin_month() {
         return join_month;
     }

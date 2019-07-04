@@ -402,6 +402,16 @@ public class AddMemberFragment extends Fragment {
                 Log.i("TGGG", "user from db...all users - " + userService.getAll().size());
 
 
+                String payFeesFlag = "0" ;
+
+                if (pay_fees.getText().toString().trim().equalsIgnoreCase(full_fees.getText().toString().trim())){
+
+                    payFeesFlag = "1" ;
+
+
+                }
+
+
                 User user = new User();
                 user.setUid(new Random().nextInt());
                 user.setName(name.getText().toString());
@@ -413,6 +423,9 @@ public class AddMemberFragment extends Fragment {
                 user.setPendingfees(pending_fees.getText().toString());
                 user.setProfile_image(bitmapdata);
                 user.setJoin_month(Utility.currentMonthYear());
+                user.setPayFees_status(payFeesFlag) ;
+
+
 
                 userService.insertAll(user);
                 users = userService.getAll();

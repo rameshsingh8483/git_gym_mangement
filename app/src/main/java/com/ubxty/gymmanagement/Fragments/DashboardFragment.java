@@ -175,10 +175,7 @@ public class DashboardFragment extends Fragment {
                     intent.putExtra("type" , "delete") ;
                     startActivity(intent);
 
-
                 }
-
-
 
             }
         });
@@ -193,7 +190,7 @@ public class DashboardFragment extends Fragment {
 
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
                    // intent.putExtra("ModalList", (Serializable) fullPayList);
-                    intent.putExtra("data" , "2") ;
+                    intent.putExtra("data" , "5") ;
                     startActivity(intent);
                 }
 
@@ -210,8 +207,8 @@ public class DashboardFragment extends Fragment {
                 }else {
 
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    intent.putExtra("ModalList", (Serializable) halfPayList);
-                    intent.putExtra("type" , "") ;
+                    //intent.putExtra("ModalList", (Serializable) halfPayList);
+                    intent.putExtra("data" , "6") ;
                     startActivity(intent);
                 }
 
@@ -247,6 +244,7 @@ public class DashboardFragment extends Fragment {
 
                 if(monthRegisterlist.size() == 0){
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
+
                 }else {
 //                    Intent intent = new Intent(getContext(), MembersActivity.class);
 //                    intent.putExtra("ModalList", monthRegisterlist);

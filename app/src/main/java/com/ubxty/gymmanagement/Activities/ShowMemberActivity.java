@@ -63,10 +63,14 @@ public class ShowMemberActivity extends AppCompatActivity {
                 if (data.equalsIgnoreCase("1")){
 
                     list = userService.getAll();
-                }else {
+
+                }else if (data.equalsIgnoreCase("5")){
 
                     list  = userService.fullPayUser() ;
 
+                }else  if (data.equalsIgnoreCase("6")){
+
+                    list  = userService.pendingPayUser() ;
                 }
 
 
