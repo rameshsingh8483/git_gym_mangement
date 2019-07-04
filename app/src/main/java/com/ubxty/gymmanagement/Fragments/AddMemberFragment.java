@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.R;
+import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
@@ -37,6 +38,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -311,6 +313,9 @@ public class AddMemberFragment extends Fragment {
                 // creating object manually this can be done using dependency injection
                 Log.i("TGGG", "user from db...all users - " + userService.getAll().size());
 
+
+
+
                 User user = new User();
                 user.setUid(new Random().nextInt());
                 user.setName(name.getText().toString());
@@ -321,6 +326,7 @@ public class AddMemberFragment extends Fragment {
                 user.setPayfees(pay_fees.getText().toString());
                 user.setPendingfees(pending_fees.getText().toString());
                 user.setProfile_image(bitmapdata);
+                user.setJoin_month(Utility.currentMonthYear());
 
                 userService.insertAll(user);
                 users = userService.getAll();

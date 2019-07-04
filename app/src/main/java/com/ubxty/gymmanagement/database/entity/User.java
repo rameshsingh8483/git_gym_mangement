@@ -38,6 +38,18 @@ public class User implements Serializable {
     private String joindate;
 
 
+    @ColumnInfo(name = "join_month")
+    private String join_month;
+
+
+    public String getJoin_month() {
+        return join_month;
+    }
+
+    public void setJoin_month(String join_month) {
+        this.join_month = join_month;
+    }
+
     public byte[] getProfile_image() {
         return profile_image;
     }
