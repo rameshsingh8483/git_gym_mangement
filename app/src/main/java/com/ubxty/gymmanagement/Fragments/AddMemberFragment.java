@@ -3,6 +3,7 @@ package com.ubxty.gymmanagement.Fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,9 +22,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ubxty.gymmanagement.Activities.HomeActivity;
@@ -41,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -48,9 +52,11 @@ import java.util.Random;
  */
 public class AddMemberFragment extends Fragment {
 
-    EditText name , phone ,  address , join_date , full_fees , pay_fees , pending_fees;
+    EditText name , phone ,  address , full_fees , pay_fees , pending_fees;
     Button btn_submit , btn_cancel ;
     View view ;
+
+    EditText join_date ;
     UserServiceImpl userService ;
     public  static ImageView iv_user ,iv_add_image ,ic_camera ;
     public  static  LinearLayout ll_add_image;
@@ -137,6 +143,14 @@ public class AddMemberFragment extends Fragment {
 
                 }
 
+            }
+        });
+
+        join_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showCalendar(join_date);
             }
         });
 
@@ -248,6 +262,80 @@ public class AddMemberFragment extends Fragment {
 
     }
 
+    public  void showCalendar(final EditText join_date){
+
+
+        int syear , smonth , sday;
+
+        String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
+
+        String clicked_date = join_date.getText().toString();
+        String str_year , str_month,str_day;
+
+//        if(clicked_date.isEmpty()) {
+//
+//            str_year = clicked_date.substring(0, 4);
+//            str_month = clicked_date.substring(5, 7);
+//            str_day = clicked_date.substring(8, 10);
+//
+//            syear = Integer.parseInt(str_year);
+//            smonth = Integer.parseInt(str_month);
+//            sday = Integer.parseInt(str_day);
+//
+//        }else{
+
+
+        str_year = date.substring(0, 4);
+        str_month = date.substring(5, 7);
+        str_day = date.substring(8, 10);
+
+        syear = Integer.parseInt(str_year);
+        smonth = Integer.parseInt(str_month);
+        sday = Integer.parseInt(str_day);
+
+//        }
+
+
+
+        DatePickerDialog dpd = new DatePickerDialog(activity , new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                String strmonth ;
+                String strday;
+
+
+                int mon = monthOfYear + 1 ;
+                if (mon < 10){
+                    strmonth = "0"+mon ;
+
+                }else{
+
+                    strmonth = ""+mon ;
+
+                } if (dayOfMonth < 10){
+
+                    strday = "0"+dayOfMonth ;
+
+                }else{
+
+                    strday = "" + dayOfMonth ;
+
+                } join_date.setText(year+"/"+strmonth+"/"+strday) ;
+
+//                list.get(i).setCalendar(join_date.getText().toString()) ;
+
+
+
+
+
+            } },syear,smonth,sday); dpd.show();
+    }
+
+
+
 
 
     private File createImageFile() throws IOException {
@@ -312,8 +400,6 @@ public class AddMemberFragment extends Fragment {
                 // Simulate network access.
                 // creating object manually this can be done using dependency injection
                 Log.i("TGGG", "user from db...all users - " + userService.getAll().size());
-
-
 
 
                 User user = new User();
