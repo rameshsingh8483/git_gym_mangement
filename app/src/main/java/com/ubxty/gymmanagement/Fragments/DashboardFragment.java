@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
 import com.ubxty.gymmanagement.Activities.ShowMemberActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.TimeUtil;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
+import com.ubxty.gymmanagement.modal.AllUser;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
 import java.io.File;
@@ -43,8 +45,8 @@ import java.util.concurrent.TimeUnit;
 public class DashboardFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "param1" ;
+    private static final String ARG_PARAM2 = "param2" ;
 
     File[]  files ;
 
@@ -56,6 +58,8 @@ public class DashboardFragment extends Fragment {
     List<User> fullPayList = new ArrayList<>() ;
     List<User> halfPayList = new ArrayList<>() ;
     List<User> DeleteList = new ArrayList<>() ;
+    Gson gson =  new Gson() ;
+
     TextView diff_txt ;
     UserServiceImpl userService ;
 
@@ -188,8 +192,8 @@ public class DashboardFragment extends Fragment {
                 }else {
 
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    intent.putExtra("ModalList", (Serializable) fullPayList);
-                    intent.putExtra("type" , "") ;
+                   // intent.putExtra("ModalList", (Serializable) fullPayList);
+                    intent.putExtra("data" , "2") ;
                     startActivity(intent);
                 }
 
@@ -205,10 +209,10 @@ public class DashboardFragment extends Fragment {
 
                 }else {
 
-//                    Intent intent = new Intent(getContext(), MembersActivity.class);
-//                    intent.putExtra("ModalList", halfPayList);
-//                    intent.putExtra("type" , "") ;
-//                    startActivity(intent);
+                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+                    intent.putExtra("ModalList", (Serializable) halfPayList);
+                    intent.putExtra("type" , "") ;
+                    startActivity(intent);
                 }
 
 
@@ -221,13 +225,15 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(allList.size() == 0){
+
+
+                if(users.size() == 0){
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
                 }else {
 
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    intent.putExtra("ModalList", (Serializable) users);
-                    intent.putExtra("type" , "") ;
+                   // intent.putExtra("ModalList", (Serializable) users);
+                    intent.putExtra("data" , "1") ;
                     startActivity(intent);
                 }
 
@@ -317,9 +323,6 @@ public class DashboardFragment extends Fragment {
                 }
 
 
-
-
-
                 Log.e("fullPayList" +user.getPayfees() ,"LISSTTTT" + user.getTotalfees()) ;
 
                 if (user.getTotalfees().equalsIgnoreCase(user.getPayfees())){
@@ -346,46 +349,56 @@ public class DashboardFragment extends Fragment {
                 }
 
 
-                if(monthRegisterlist.size() > 0) {
 
-                    month_register.setText("( " + monthRegisterlist.size() + " )");
-                }
-
-                if(fullFees) {
-
-                    String day  = TimeUtil.dateCalculate(user.getJoindate() , "MM/dd/yyyy") ;
-
-                    Log.w("day","day" + day) ;
-
-
-                    //    String Day = String.valueOf(TimeUnit.DAYS.convert(abc, TimeUnit.MILLISECONDS));
-
-                    int dayCount = Integer.parseInt(day);
-
-                    if(dayCount > 24 && dayCount < 31) {
-
-                        expWeeklist.add(user);
-
-                    } else {
-
-                        if(dayCount > 30) {
-
-                            if (Utility.UpdateFeesExpMonth(user)){
-
-                                expMonthlist.add(user);
-                            }
-
-                        }
-
-
-                    }
-
-
-                }
+//
+//                if(fullFees) {
+//
+//                    String day  = TimeUtil.dateCalculate(user.getJoindate() , "MM/dd/yyyy") ;
+//
+//                    Log.w("day","day" + day) ;
+//
+//
+//                    //    String Day = String.valueOf(TimeUnit.DAYS.convert(abc, TimeUnit.MILLISECONDS));
+//
+//                    int dayCount = Integer.parseInt(day);
+//
+//                    if(dayCount > 24 && dayCount < 31) {
+//
+//                        expWeeklist.add(user);
+//
+//                    } else {
+//
+//                        if(dayCount > 30) {
+//
+//                            if (Utility.UpdateFeesExpMonth(user)){
+//
+//                                expMonthlist.add(user);
+//                            }
+//
+//                        }
+//
+//
+//                    }
+//
+//
+//                }
 
 
 
             }
+
+
+
+
+            Log.w("monthRegisterlist","monthRegisterlist" + monthRegisterlist.size()) ;
+            Log.w("monthRegisterlist","expWeeklist" + expWeeklist.size()) ;
+            Log.w("monthRegisterlist","expMonthlist" + expMonthlist.size()) ;
+            Log.w("monthRegisterlist","fullPayList" + fullPayList.size()) ;
+            Log.w("monthRegisterlist","halfPayList" + halfPayList.size()) ;
+
+
+
+
 
             if(monthRegisterlist.size() > 0){
                 month_register.setText("( "+ monthRegisterlist.size()+" )" );

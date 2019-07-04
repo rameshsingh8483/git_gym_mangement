@@ -23,5 +23,8 @@ public interface UserService {
 
     void deleteUser(User user) ;
 
+    List<User> fullPayUser() ;
+
+
 
 }

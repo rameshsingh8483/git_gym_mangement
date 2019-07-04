@@ -41,5 +41,13 @@ public class UserServiceImpl implements UserService {
         userDao.delete(user) ;
     }
 
+    @Override
+    public List<User> fullPayUser() {
+
+        return  userDao.fullpayUser() ;
+
+        //return null;
+    }
+
 
 }
