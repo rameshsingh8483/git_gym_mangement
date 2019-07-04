@@ -1,6 +1,7 @@
 package com.ubxty.gymmanagement.Activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -30,7 +31,7 @@ import java.net.URISyntaxException;
 
 import static com.ubxty.gymmanagement.Fragments.AddMemberFragment.iv_add_image;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements  DashboardFragment.OnFragmentInteractionListener{
 
     FrameLayout frame_container;
     BottomNavigationView navigation;
@@ -236,5 +237,10 @@ public class HomeActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
