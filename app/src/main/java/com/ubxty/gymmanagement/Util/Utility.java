@@ -126,7 +126,7 @@ public class Utility {
 
         Calendar c = Calendar.getInstance();
         //  System.out.println("Current time => "+c.getTime());
-        SimpleDateFormat df = new SimpleDateFormat("MMMM,yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("MMMM/yyyy");
 
         Log.w("Monthh","Utility" + df.format(c.getTime())) ;
 

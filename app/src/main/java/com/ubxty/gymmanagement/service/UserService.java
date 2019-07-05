@@ -29,5 +29,7 @@ public interface UserService {
     List<User> pendingPayUser() ;
 
 
+    List<User> thisMonthUser(String month) ;
+
 
 }

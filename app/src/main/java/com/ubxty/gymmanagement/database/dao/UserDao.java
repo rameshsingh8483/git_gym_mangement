@@ -28,9 +28,12 @@ public interface UserDao {
     List<User> fullpayUser();
 
 
-
     @Query("SELECT * FROM user WHERE payFees_status = 0")
     List<User> pendingPayUser();
+
+
+    @Query("SELECT * FROM user WHERE join_month LIKE  :month ")
+    List<User> thisMonthUser(String month);
 
 
     @Insert

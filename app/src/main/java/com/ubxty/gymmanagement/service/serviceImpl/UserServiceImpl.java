@@ -54,5 +54,12 @@ public class UserServiceImpl implements UserService {
         return  userDao.pendingPayUser() ;
     }
 
+    @Override
+    public List<User> thisMonthUser(String month) {
+
+        return  userDao.thisMonthUser(month) ;
+
+    }
+
 
 }

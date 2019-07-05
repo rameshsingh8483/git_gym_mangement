@@ -139,6 +139,7 @@ public class DashboardFragment extends Fragment {
             @Override
             protected Void doInBackground(Void... params) {
                 users = userService.getAll();
+                monthRegisterlist = userService.thisMonthUser(Utility.currentMonthYear());
                 return null;
             }
 
@@ -222,10 +223,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
-
                 if(users.size() == 0){
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
+
                 }else {
 
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
@@ -316,12 +316,12 @@ public class DashboardFragment extends Fragment {
 
             for (User  user : users) {
 
+                Log.e("fullPayList" +user.getJoin_month() ,"LISSTTTT" + Utility.currentMonthYear()) ;
+
                 if (user.getJoin_month().equalsIgnoreCase(Utility.currentMonthYear())){
                     monthRegisterlist.add(user) ;
                 }
 
-
-                Log.e("fullPayList" +user.getPayfees() ,"LISSTTTT" + user.getTotalfees()) ;
 
                 if (user.getTotalfees().equalsIgnoreCase(user.getPayfees())){
 
