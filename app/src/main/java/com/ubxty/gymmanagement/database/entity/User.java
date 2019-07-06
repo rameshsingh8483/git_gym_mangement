@@ -46,6 +46,19 @@ public class User implements Serializable {
     private String payFees_status;
 
 
+
+    @ColumnInfo(name = "payfull_fees_date")
+    private String payfull_fees_date;
+
+
+    public String getPayfull_fees_date() {
+        return payfull_fees_date;
+    }
+
+    public void setPayfull_fees_date(String payfull_fees_date) {
+        this.payfull_fees_date = payfull_fees_date;
+    }
+
     public String getPayFees_status() {
         return payFees_status;
     }

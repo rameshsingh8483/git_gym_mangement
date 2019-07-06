@@ -23,6 +23,7 @@ import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.DB.DBHelper;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.database.entity.User;
+import com.ubxty.gymmanagement.healperdialog.HelperDialog;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class MemberFragment extends Fragment {
 
     FloatingActionButton add_member ;
     MenRecView menRecView ;
+    HelperDialog helperDialog ;
 
     public MemberFragment() {
         // Required empty public constructor
@@ -53,7 +55,11 @@ public class MemberFragment extends Fragment {
          Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+
         view = inflater.inflate(R.layout.fragment_member, container, false);
+
+        helperDialog = new HelperDialog(getActivity()) ;
+
 
         findViewById() ;
 
@@ -97,7 +103,6 @@ public class MemberFragment extends Fragment {
         member_rec = view.findViewById(R.id.member_rec) ;
         member_rec.setLayoutManager(new LinearLayoutManager(getContext()));
         userService = new UserServiceImpl(getActivity());
-
 
     }
 
@@ -168,13 +173,9 @@ public class MemberFragment extends Fragment {
                 public void onClick(View view) {
 
                     Bundle bundle = new Bundle() ;
-
                     bundle.putSerializable("userData" , list.get(position));
-
                     UserProfileFragment fragment = new UserProfileFragment() ;
-
                     fragment.setArguments(bundle) ;
-
                     ((HomeActivity)getActivity()).loadFragment(fragment , true , "UserProfileFragment");
 
 

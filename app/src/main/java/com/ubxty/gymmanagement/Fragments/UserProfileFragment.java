@@ -1,6 +1,8 @@
 package com.ubxty.gymmanagement.Fragments;
 
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -8,9 +10,15 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +31,9 @@ import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.database.entity.User;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -39,8 +50,6 @@ public class UserProfileFragment extends Fragment {
     User user ;
     SpeedDialView speedDialView ;
     UserServiceImpl userService ;
-
-
 
 
     public UserProfileFragment() {
@@ -79,7 +88,6 @@ public class UserProfileFragment extends Fragment {
 
                         //userService = new UserServiceImpl(getActivity());
 
-
                         new DeleteMember().execute() ;
 
 
@@ -94,6 +102,11 @@ public class UserProfileFragment extends Fragment {
                         break;
 
 
+                    case  R.id.pay_fees :
+
+                        payfeesDialog() ;
+
+                        break ;
 
 
                     default:
@@ -130,6 +143,167 @@ public class UserProfileFragment extends Fragment {
 
     }
 
+    private void payfeesDialog() {
+
+        final EditText full_fees , pay_fees , pending_fees , pay_date  ;
+
+        Button btn_submit , btn_cencel ;
+
+         final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.pay_fees_dialog);
+
+
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.dimAmount = 0f;
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT ;
+        lp.gravity = Gravity.CENTER;
+
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        dialog.show();
+
+        full_fees = dialog.findViewById(R.id.full_fees) ;
+        pay_fees = dialog.findViewById(R.id.pay_fees) ;
+        pending_fees = dialog.findViewById(R.id.pending_fees) ;
+        pay_date = dialog.findViewById(R.id.pay_date) ;
+        btn_submit = dialog.findViewById(R.id.btn_submit) ;
+        btn_cencel = dialog.findViewById(R.id.btn_cencel) ;
+
+        full_fees.setText(""+ user.getTotalfees());
+        pay_fees.setText(""+ user.getPayfees());
+        pending_fees.setText(""+ user.getPendingfees()) ;
+
+
+        pay_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                showCalendar(pay_date) ;
+
+
+
+            }
+        });
+
+
+
+
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                user.setPayfees(user.getTotalfees());
+                user.setPendingfees("0") ;
+                user.setPayFees_status("1");
+                user.setPayfull_fees_date(pay_date.getText().toString()) ;
+
+                dialog.dismiss() ;
+
+
+            }
+        });
+
+
+        btn_cencel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                dialog.dismiss() ;
+
+            }
+        });
+
+
+
+
+
+    }
+
+
+
+    public  void showCalendar(final EditText join_date){
+        int syear , smonth , sday;
+
+        String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
+
+        String clicked_date = join_date.getText().toString();
+        String str_year , str_month,str_day;
+
+//        if(clicked_date.isEmpty()) {
+//
+//            str_year = clicked_date.substring(0, 4);
+//            str_month = clicked_date.substring(5, 7);
+//            str_day = clicked_date.substring(8, 10);
+//
+//            syear = Integer.parseInt(str_year);
+//            smonth = Integer.parseInt(str_month);
+//            sday = Integer.parseInt(str_day);
+//
+//        }else{
+
+
+        str_year = date.substring(0, 4);
+        str_month = date.substring(5, 7);
+        str_day = date.substring(8, 10);
+
+        syear = Integer.parseInt(str_year);
+        smonth = Integer.parseInt(str_month);
+        sday = Integer.parseInt(str_day);
+
+//        }
+
+
+
+        DatePickerDialog dpd = new DatePickerDialog(getActivity() , new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                String strmonth ;
+                String strday;
+
+
+                int mon = monthOfYear + 1 ;
+                if (mon < 10){
+                    strmonth = "0"+mon ;
+
+                }else{
+
+                    strmonth = ""+mon ;
+
+                } if (dayOfMonth < 10){
+
+                    strday = "0"+dayOfMonth ;
+
+                }else{
+
+                    strday = "" + dayOfMonth ;
+
+                } join_date.setText(year+"/"+strmonth+"/"+strday) ;
+
+//                list.get(i).setCalendar(join_date.getText().toString()) ;
+
+
+
+
+
+            } },syear,smonth,sday); dpd.show();
+    }
+
+
+
+
     private void setData() {
 
 
@@ -146,6 +320,9 @@ public class UserProfileFragment extends Fragment {
     }
 
     private void findViewById() {
+
+        user = (User) getArguments().getSerializable("userData");
+
 
         btn_call = view.findViewById(R.id.btn_call) ;
         iv_user = view.findViewById(R.id.iv_user) ;
@@ -174,9 +351,18 @@ public class UserProfileFragment extends Fragment {
 
         );
 
+        if (user.getPayFees_status().equalsIgnoreCase("0")){
+
+            speedDialView.addActionItem(
+                    new SpeedDialActionItem.Builder( R.id.pay_fees, R.drawable.ic_pay)
+                            .create()
 
 
-        user = (User) getArguments().getSerializable("userData");
+            );
+
+
+        }
+
 
 
     }

@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -275,6 +276,23 @@ public class Utility {
         return "" + month+ "/" + year ;
 
 }
+
+
+
+public static String CurrentDate(){
+
+
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+    Date dateobj = new Date();
+
+    return df.format(dateobj) ;
+
+    //System.out.println(df.format(dateobj));
+
+
+}
+
+
 
 }
 

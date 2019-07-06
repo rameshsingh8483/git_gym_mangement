@@ -33,6 +33,7 @@ import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
+import com.ubxty.gymmanagement.healperdialog.HelperDialog;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
 import java.io.ByteArrayOutputStream;
@@ -56,7 +57,7 @@ public class AddMemberFragment extends Fragment {
     Button btn_submit , btn_cancel ;
     View view ;
 
-    EditText join_date ;
+    TextView join_date ;
     UserServiceImpl userService ;
     public  static ImageView iv_user ,iv_add_image ,ic_camera ;
     public  static  LinearLayout ll_add_image;
@@ -66,6 +67,7 @@ public class AddMemberFragment extends Fragment {
     HomeActivity activity;
 
     public static File uploadFile;
+    HelperDialog helperDialog ;
 
 
     public AddMemberFragment() {
@@ -78,7 +80,7 @@ public class AddMemberFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_add_member, container, false);
-
+        helperDialog = new HelperDialog(getActivity()) ;
         activity = (HomeActivity)getActivity();
 
 
@@ -164,6 +166,8 @@ public class AddMemberFragment extends Fragment {
 
                 }
                 else {
+
+                    helperDialog.showLoader() ;
 
                     try {
 
@@ -262,9 +266,7 @@ public class AddMemberFragment extends Fragment {
 
     }
 
-    public  void showCalendar(final EditText join_date){
-
-
+    public  void showCalendar(final TextView join_date){
         int syear , smonth , sday;
 
         String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
@@ -403,10 +405,12 @@ public class AddMemberFragment extends Fragment {
 
 
                 String payFeesFlag = "0" ;
+                String payFeesFullDate = "0" ;
 
                 if (pay_fees.getText().toString().trim().equalsIgnoreCase(full_fees.getText().toString().trim())){
 
                     payFeesFlag = "1" ;
+                    payFeesFullDate  = Utility.CurrentDate() ;
 
 
                 }
@@ -424,8 +428,7 @@ public class AddMemberFragment extends Fragment {
                 user.setProfile_image(bitmapdata);
                 user.setJoin_month(Utility.currentMonthYear());
                 user.setPayFees_status(payFeesFlag) ;
-
-
+                user.setPayfull_fees_date(payFeesFullDate) ;
 
                 userService.insertAll(user);
                 users = userService.getAll();
@@ -462,6 +465,8 @@ public class AddMemberFragment extends Fragment {
                 Toast.makeText(getContext(), "User created...", Toast.LENGTH_LONG).show();
                 //menRecView.notifyDataSetChanged();
             //    setAdapter();
+
+                helperDialog.dismissLoader() ;
 
                 ((HomeActivity)getActivity()).loadFragment(new MemberFragment() , true , "MemberFragment");
 
