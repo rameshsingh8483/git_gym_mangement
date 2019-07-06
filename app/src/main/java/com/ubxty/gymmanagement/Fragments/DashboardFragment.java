@@ -135,6 +135,8 @@ public class DashboardFragment extends Fragment {
 
 
     private void getUsersFromDB() {
+
+
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -246,11 +248,10 @@ public class DashboardFragment extends Fragment {
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
 
                 }else {
-//                    Intent intent = new Intent(getContext(), MembersActivity.class);
-//                    intent.putExtra("ModalList", monthRegisterlist);
-//                    intent.putExtra("type" , "") ;
-//                    startActivity(intent);
 
+                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+                    intent.putExtra("data" , "2") ;
+                    startActivity(intent);
                 }
 
             }
@@ -264,10 +265,10 @@ public class DashboardFragment extends Fragment {
                 }else {
 
 
-//                    Intent intent = new Intent(getContext(), MembersActivity.class);
-//                    intent.putExtra("ModalList", expWeeklist);
-//                    intent.putExtra("type" , "") ;
-//                    startActivity(intent);
+                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+                    // intent.putExtra("ModalList", (Serializable) users);
+                    intent.putExtra("data" , "3") ;
+                    startActivity(intent);
 
                 }
             }
@@ -280,11 +281,15 @@ public class DashboardFragment extends Fragment {
                 if(expMonthlist.size() == 0){
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
                 }else {
+
+
+                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+                    // intent.putExtra("ModalList", (Serializable) users);
+                    intent.putExtra("data" , "4") ;
+                    startActivity(intent);
 //
-//                    Intent intent = new Intent(getContext(), MembersActivity.class);
-//                    intent.putExtra("ModalList", expMonthlist);
-//                    intent.putExtra("type" , "") ;
-//                    startActivity(intent);
+//
+
 
                 }
             }
@@ -310,16 +315,34 @@ public class DashboardFragment extends Fragment {
             // File newdir= getContext().getDir("Registration Files", Context.MODE_PRIVATE);
 
 
-
-
-
-
             for (User  user : users) {
 
                 Log.e("fullPayList" +user.getJoin_month() ,"LISSTTTT" + Utility.currentMonthYear()) ;
 
                 if (user.getJoin_month().equalsIgnoreCase(Utility.currentMonthYear())){
                     monthRegisterlist.add(user) ;
+                }
+
+                Log.w("user.getPayfull",">>>>>" + user.getPayfull_fees_date()) ;
+
+                if (!user.getPayfull_fees_date().equalsIgnoreCase("0")) {
+
+                    Log.w("fdfdfd", "" + Utility.getDaysBetweenDates(user.getPayfull_fees_date()));
+
+                    long  day = Utility.getDaysBetweenDates(user.getPayfull_fees_date()) ;
+
+                    if (day > -7 && day  < 0 ){
+
+                        expWeeklist.add(user) ;
+
+                    }
+
+                    if (day > -1 && day  < 0 ){
+
+                        expMonthlist.add(user) ;
+
+                    }
+
                 }
 
 
@@ -342,7 +365,7 @@ public class DashboardFragment extends Fragment {
 
                 if(user.getJoindate().contains(Utility.currentMonth())) {
 
-                    monthRegisterlist.add(user);
+                    monthRegisterlist.add(user) ;
 
                 }
 

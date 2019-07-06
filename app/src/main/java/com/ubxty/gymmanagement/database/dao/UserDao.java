@@ -4,6 +4,8 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
+import android.content.ClipData;
 
 
 import com.ubxty.gymmanagement.database.entity.User;
@@ -34,6 +36,12 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE join_month LIKE  :month ")
     List<User> thisMonthUser(String month);
+
+
+
+
+    @Update
+    void updateUsers(User user) ;
 
 
     @Insert

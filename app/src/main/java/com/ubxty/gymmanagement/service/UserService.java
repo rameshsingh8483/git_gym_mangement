@@ -31,5 +31,8 @@ public interface UserService {
 
     List<User> thisMonthUser(String month) ;
 
+    void updateUsers(User user) ;
+
+
 
 }

@@ -160,6 +160,21 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
+
+            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+                android:id="@+id/pay_fees_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pay Fees Date"
+                android:paddingLeft="@dimen/_10sdp"
+                android:text=""
+                android:backgroundTint="@color/mainColor"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_singleLineEllipsis="true" />
+
+
+
             <TextView
                 android:textAllCaps="true"
                 android:layout_width="match_parent"

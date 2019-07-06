@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,17 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ubxty.gymmanagement.Fragments.MemberFragment;
 import com.ubxty.gymmanagement.R;
+import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
 import com.ubxty.gymmanagement.modal.AllUser;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ShowMemberActivity extends AppCompatActivity {
 
@@ -62,15 +68,67 @@ public class ShowMemberActivity extends AppCompatActivity {
 
                 if (data.equalsIgnoreCase("1")){
 
-                    list = userService.getAll();
+                    list = userService.getAll() ;
 
-                }else if (data.equalsIgnoreCase("5")){
+                }else if (data.equalsIgnoreCase("2")){
+
+                    list = userService.thisMonthUser(Utility.currentMonthYear()) ;
+
+
+                }else  if (data.equalsIgnoreCase("5")){
 
                     list  = userService.fullPayUser() ;
 
                 }else  if (data.equalsIgnoreCase("6")){
 
                     list  = userService.pendingPayUser() ;
+
+                }else  if (data.equalsIgnoreCase("3")){
+
+                    List<User> Alllist = new ArrayList<>() ;
+                    Alllist = userService.getAll();
+
+                    for (User user : Alllist) {
+
+                        if (!user.getPayfull_fees_date().equalsIgnoreCase("0")) {
+
+                            Date d1 = new Date();
+                            Date d2 = new Date(user.getPayfull_fees_date());
+
+                            long day = TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
+
+                            if (day > -7 && day < 0) {
+
+                                list.add(user);
+
+                            }
+
+                        }
+                    }
+
+                }else  if (data.equalsIgnoreCase("4")){
+
+                    List<User> Alllist = new ArrayList<>() ;
+                    Alllist = userService.getAll();
+
+                    for (User user : Alllist) {
+
+                        if (!user.getPayfull_fees_date().equalsIgnoreCase("0")) {
+
+                            Date d1 = new Date();
+                            Date d2 = new Date(user.getPayfull_fees_date());
+
+                            long day = TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
+
+                            if (day > -1 && day < 0) {
+
+                                list.add(user) ;
+
+                            }
+
+                        }
+                    }
+
                 }
 
 

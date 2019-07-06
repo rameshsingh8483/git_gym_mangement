@@ -85,6 +85,7 @@ public class AddMemberFragment extends Fragment {
 
 
         findViewById() ;
+
         clickListener() ;
 
 
@@ -433,7 +434,7 @@ public class AddMemberFragment extends Fragment {
                 userService.insertAll(user);
                 users = userService.getAll();
 
-                Log.i("TAGGG", "user inserted in db..." + user);
+
                 Log.i("TAGGG", "user from db...all users - " + userService.getAll().size());
 
                 Thread.sleep(2000);
@@ -468,7 +469,7 @@ public class AddMemberFragment extends Fragment {
 
                 helperDialog.dismissLoader() ;
 
-                ((HomeActivity)getActivity()).loadFragment(new MemberFragment() , true , "MemberFragment");
+                ((HomeActivity)getActivity()).loadFragment(new MemberFragment() , false , "MemberFragment");
 
 
 //                HomeActivity homeActivity = new HomeActivity() ;

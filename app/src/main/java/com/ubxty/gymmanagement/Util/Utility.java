@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Utility {
 
@@ -291,6 +292,20 @@ public static String CurrentDate(){
 
 
 }
+
+    public static long getDaysBetweenDates(String dateStr){
+
+
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        Date d1 = new Date();
+
+        Date d2 = new Date(dateStr) ;
+
+        Log.w("Date " + d1,d2 + "d2") ;
+
+
+        return TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
+    }
 
 
 

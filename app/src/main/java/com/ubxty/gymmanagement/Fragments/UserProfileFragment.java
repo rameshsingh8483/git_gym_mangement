@@ -28,6 +28,7 @@ import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.R;
+import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
@@ -45,7 +46,7 @@ public class UserProfileFragment extends Fragment {
     View view ;
 
     FloatingActionButton btn_call ;
-    TextView name , phone , address ,join_date , full_fees , pay_fees , pending_fees  ;
+    TextView name ,pay_fees_date , phone , address ,join_date , full_fees , pay_fees , pending_fees  ;
 
     User user ;
     SpeedDialView speedDialView ;
@@ -65,12 +66,20 @@ public class UserProfileFragment extends Fragment {
 
         findViewById() ;
 
-        setData() ;
+
 
         clickListener() ;
 
 
         return  view ;
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setData() ;
 
     }
 
@@ -201,12 +210,37 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                user.setPayfees(user.getTotalfees());
-                user.setPendingfees("0") ;
-                user.setPayFees_status("1");
-                user.setPayfull_fees_date(pay_date.getText().toString()) ;
 
-                dialog.dismiss() ;
+                new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected Void doInBackground(Void... params) {
+
+                        user.setPayfees(user.getTotalfees());
+                        user.setPendingfees("0") ;
+                        user.setPayFees_status("1");
+                        user.setPayfull_fees_date(pay_date.getText().toString()) ;
+
+                        userService.updateUsers(user) ;
+
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void agentsCount) {
+                        //usersTextView.setText("Users \n\n " + users);
+
+                        dialog.dismiss() ;
+                        Toast.makeText(getContext() , "Fees Pay Sucessfully", Toast.LENGTH_SHORT).show();
+                        setData() ;
+
+
+                    }
+                }.execute();
+
+
+
+
+
 
 
             }
@@ -317,13 +351,20 @@ public class UserProfileFragment extends Fragment {
         pay_fees.setText("" + user.getPayfees()) ;
         pending_fees.setText("" + user.getPendingfees()) ;
 
+        if (user.getPayFees_status().equalsIgnoreCase("1")){
+
+            pay_fees_date.setText("" + user.getPayfull_fees_date()) ;
+
+        }else{
+
+            pay_fees_date.setText("Pending");
+        }
+
     }
 
     private void findViewById() {
 
         user = (User) getArguments().getSerializable("userData");
-
-
         btn_call = view.findViewById(R.id.btn_call) ;
         iv_user = view.findViewById(R.id.iv_user) ;
         name = view.findViewById(R.id.name) ;
@@ -333,6 +374,7 @@ public class UserProfileFragment extends Fragment {
         full_fees = view.findViewById(R.id.full_fees) ;
         pay_fees = view.findViewById(R.id.pay_fees) ;
         pending_fees = view.findViewById(R.id.pending_fees) ;
+        pay_fees_date = view.findViewById(R.id.pay_fees_date) ;
 
         userService = new UserServiceImpl(getActivity());
 
