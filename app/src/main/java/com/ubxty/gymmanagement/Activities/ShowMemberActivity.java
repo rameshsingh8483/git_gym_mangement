@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.ubxty.gymmanagement.Fragments.MemberFragment;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
@@ -34,7 +33,7 @@ public class ShowMemberActivity extends AppCompatActivity {
 
     RecyclerView recView ;
     List<User> list = new ArrayList<>() ;
-    Gson gson = new Gson() ;
+
     String data = "" ;
     UserServiceImpl userService ;
 

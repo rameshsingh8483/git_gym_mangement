@@ -165,23 +165,29 @@ public class AddMemberFragment extends Fragment {
 
                     Toast.makeText(getContext(),"Please Select Profile Picture !", Toast.LENGTH_LONG).show();
 
-                }
-                else {
+                }else {
 
-                    helperDialog.showLoader() ;
+                    if (checkValidate()) {
 
-                    try {
 
-                        Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(uploadFile));
+                        helperDialog.showLoader();
 
-                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-                         bitmapdata = bos.toByteArray();
+                        try {
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                            btn_submit.setClickable(false);
+
+                            Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(uploadFile));
+
+                            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                            bitmapdata = bos.toByteArray();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        new InsertMember().execute();
+
                     }
-                    new InsertMember().execute();
                 }
 
             }
@@ -198,6 +204,18 @@ public class AddMemberFragment extends Fragment {
 
             }
         });
+
+    }
+
+    private boolean checkValidate() {
+
+        if(name.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || address.getText().toString().isEmpty() || full_fees.getText().toString().isEmpty() || pay_fees.getText().toString().isEmpty()){
+
+            Toast.makeText(getContext() ,"All Feilds are required !" ,Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
 
     }
 

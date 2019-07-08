@@ -59,10 +59,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mobile.getText().toString().equalsIgnoreCase("6280445086")&& password.getText().toString().equalsIgnoreCase("qwerty")){
+                if (mobile.getText().toString().equalsIgnoreCase("6280608109")&& password.getText().toString().equalsIgnoreCase("qwerty")){
 
                     manager.putStrin("USER" ,"LOGIN");
-                    startActivity(new Intent(getApplicationContext() , HomeActivity.class));
+
+                    Intent intent = new Intent(getApplicationContext() , HomeActivity.class);
+
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    startActivity(intent);
 
                 }else{
 

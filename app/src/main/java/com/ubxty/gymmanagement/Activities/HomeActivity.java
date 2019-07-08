@@ -16,13 +16,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.ubxty.gymmanagement.DB.SessionManager;
 import com.ubxty.gymmanagement.Fragments.AddMemberFragment;
 import com.ubxty.gymmanagement.Fragments.DashboardFragment;
 import com.ubxty.gymmanagement.Fragments.GymFragment;
 import com.ubxty.gymmanagement.Fragments.MemberFragment;
+import com.ubxty.gymmanagement.MainActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.PathUtil;
 
@@ -36,6 +39,9 @@ public class HomeActivity extends AppCompatActivity implements  DashboardFragmen
     FrameLayout frame_container;
     BottomNavigationView navigation;
     TabLayout tablauout;
+    TextView logout;
+
+    SessionManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +51,7 @@ public class HomeActivity extends AppCompatActivity implements  DashboardFragmen
         findViewById();
 
         initTab();
-//        setListeners();
+        setListeners();
 
     }
 
@@ -54,50 +60,29 @@ public class HomeActivity extends AppCompatActivity implements  DashboardFragmen
     frame_container = findViewById(R.id.frame_container);
    // navigation = findViewById(R.id.navigation);
         tablauout = findViewById(R.id.tablauout);
+        logout = findViewById(R.id.logout);
+
 
 
     }
 
     private void setListeners() {
 
-         BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-                = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    logout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            manager = new SessionManager(getApplicationContext());
 
-             @Override
-             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            manager.putStrin("USER" ,"");
 
-                 switch(menuItem.getItemId()){
+            Intent intent = new Intent(getApplicationContext() , MainActivity.class);
 
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
 
-                     case R.id.menu_member:{
-
-//                         loadFragment(new MemberFragment() , true , "MemberFragment");
-                         Toast.makeText(getApplicationContext() ,"Member menu" ,Toast.LENGTH_LONG).show();
-
-                     }
-
-                     case R.id.menu_dashboard:{
-
-//                         loadFragment(new DashboardFragment(), true , "DashboardFragment");
-
-                         Toast.makeText(getApplicationContext() ,"Dashboard menu" ,Toast.LENGTH_LONG).show();
-
-                     }
-                     case R.id.menu_gym:{
-
-//                         loadFragment(new GymFragment(), true , "GymFragment");
-
-                         Toast.makeText(getApplicationContext() ,"Gym menu" ,Toast.LENGTH_LONG).show();
-
-                     }
-
-                 }
-
-                 return false;
-             }
-
-
-        };
+        }
+    });
     }
 
 //    public void loadFragment(Fragment fragment) {

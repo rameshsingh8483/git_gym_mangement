@@ -351,14 +351,16 @@ public class UserProfileFragment extends Fragment {
         pay_fees.setText("" + user.getPayfees()) ;
         pending_fees.setText("" + user.getPendingfees()) ;
 
-        if (user.getPayFees_status().equalsIgnoreCase("1")){
-
-            pay_fees_date.setText("" + user.getPayfull_fees_date()) ;
-
-        }else{
-
-            pay_fees_date.setText("Pending");
-        }
+//        if (user.getPayFees_status().equalsIgnoreCase("1")) {
+//
+//            pay_fees_date.setText("" + user.getPayfull_fees_date());
+//
+//
+//        }else{
+//
+//            pay_fees_date.setText("2019-01-01");
+//
+//        }
 
     }
 
@@ -374,7 +376,7 @@ public class UserProfileFragment extends Fragment {
         full_fees = view.findViewById(R.id.full_fees) ;
         pay_fees = view.findViewById(R.id.pay_fees) ;
         pending_fees = view.findViewById(R.id.pending_fees) ;
-        pay_fees_date = view.findViewById(R.id.pay_fees_date) ;
+        pay_fees_date = view.findViewById(R.id.pay_date) ;
 
         userService = new UserServiceImpl(getActivity());
 
