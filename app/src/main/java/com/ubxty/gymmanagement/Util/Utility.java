@@ -286,7 +286,9 @@ public static String CurrentDate(){
     DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
     Date dateobj = new Date();
 
-    return df.format(dateobj) ;
+
+    Log.w("Check" ,"data->>"+df.format(dateobj));
+    return df.format(dateobj);
 
     //System.out.println(df.format(dateobj));
 

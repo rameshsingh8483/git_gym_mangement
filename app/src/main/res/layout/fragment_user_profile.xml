@@ -17,66 +17,62 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginTop="@dimen/_10sdp"
-            android:padding="@dimen/_20ssp"
-            >
-
+            android:orientation="vertical"
+            android:padding="@dimen/_20ssp">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                >
+                android:gravity="center">
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="200sp"
-                        android:text="Add image"
                         android:layout_gravity="center"
-                        android:textAlignment="center"
                         android:gravity="center"
-                        android:textSize="25sp"/>
+                        android:text="Add image"
+                        android:textAlignment="center"
+                        android:textSize="25sp"
+                        android:visibility="gone" />
 
                     <ImageView
 
+                        android:id="@+id/iv_user"
                         android:layout_width="match_parent"
                         android:layout_height="200sp"
                         android:layout_marginBottom="10sp"
                         android:scaleType="centerCrop"
-                        android:id="@+id/iv_user"
 
                         />
 
 
                     <LinearLayout
                         android:id="@+id/ll_add_image"
-                        android:padding="20sp"
-                        android:background="@drawable/cirecle_shape"
                         android:layout_width="160sp"
                         android:layout_height="160sp"
-                        android:orientation="vertical"
                         android:layout_gravity="center"
+                        android:background="@drawable/cirecle_shape"
                         android:gravity="center"
-                        android:visibility="gone"
-                        >
+                        android:orientation="vertical"
+                        android:padding="20sp"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="14sp"
+                            android:gravity="center"
                             android:text="Add Image"
                             android:textColor="@color/colorAccent"
-                            android:textSize="25sp"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:layout_marginBottom="14sp"
-                            />
+                            android:textSize="25sp" />
 
 
                         <ImageView
@@ -88,7 +84,6 @@
                             android:tint="@color/colorAccent"
 
                             />
-
 
 
                     </LinearLayout>
@@ -103,32 +98,36 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Information"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Personal"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_15ssp"
-                android:layout_gravity="center"
-                android:gravity="center"
 
                 />
 
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+            <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
                 android:hint="Name"
                 android:paddingLeft="@dimen/_10sdp"
                 android:text=""
-                android:backgroundTint="@color/mainColor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+            <TextView
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
                 android:hint="Phone"
                 android:inputType="phone"
                 android:paddingLeft="@dimen/_10sdp"
@@ -136,91 +135,101 @@
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+
+            <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/mainColor"
                 android:hint="Address"
                 android:paddingLeft="@dimen/_10sdp"
                 android:text=""
-                android:backgroundTint="@color/mainColor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+            <TextView
                 android:id="@+id/join_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
                 android:hint="Joining Date"
                 android:paddingLeft="@dimen/_10sdp"
                 android:text=""
-                android:backgroundTint="@color/mainColor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
-
-
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
-                android:id="@+id/pay_fees_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Pay Fees Date"
-                android:paddingLeft="@dimen/_10sdp"
-                android:text=""
-                android:backgroundTint="@color/mainColor"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorAccent"
-                app:met_singleLineEllipsis="true" />
-
 
 
             <TextView
-                android:textAllCaps="true"
+                android:id="@+id/pay_fees_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
+                android:hint="Pay Fees Date"
+                android:paddingLeft="@dimen/_10sdp"
+                android:text=""
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_singleLineEllipsis="true" />
+
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fees"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/_15ssp"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginTop="@dimen/_20ssp"
-                />
+                android:gravity="center"
+                android:text="Fees"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_15ssp" />
 
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+            <TextView
                 android:id="@+id/full_fees"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
                 android:hint="Full Fee"
                 android:inputType="number"
                 android:paddingLeft="@dimen/_10sdp"
                 android:text=""
-                android:backgroundTint="@color/mainColor"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorAccent"
-                app:met_singleLineEllipsis="true" />
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
-                android:id="@+id/pay_fees"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Pay Fee"
-                android:inputType="number"
-                android:paddingLeft="@dimen/_10sdp"
-                android:text=""
-                android:backgroundTint="@color/mainColor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+            <TextView
+                android:id="@+id/pay_fees"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
+                android:hint="Pay Fee"
+                android:inputType="number"
+                android:paddingLeft="@dimen/_10sdp"
+                android:text=""
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_singleLineEllipsis="true" />
+
+            <TextView
                 android:id="@+id/pending_fees"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
                 android:hint="Pending Fee"
                 android:inputType="number"
                 android:paddingLeft="@dimen/_10sdp"
                 android:text=""
-                android:backgroundTint="@color/mainColor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
@@ -229,16 +238,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:weightSum="2"
                 android:visibility="gone"
-                >
+                android:weightSum="2">
 
 
                 <Button
                     android:id="@+id/btn_submit"
                     android:layout_width="0sp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/round"
                     android:text="Add Member"
                     android:textColor="@color/whiteColor"
@@ -250,9 +258,9 @@
                 <Button
                     android:id="@+id/btn_cancel"
                     android:layout_width="0sp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
                     android:background="@drawable/round"
                     android:text="Cancel"
                     android:textColor="@color/whiteColor"
@@ -264,10 +272,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
-
-
 
 
     </android.support.v4.widget.NestedScrollView>

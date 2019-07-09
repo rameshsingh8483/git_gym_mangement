@@ -60,22 +60,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (loginFlag){
+                if (mobile.getText().toString().equalsIgnoreCase("6280608109")&& password.getText().toString().equalsIgnoreCase("qwerty")){
 
-                    startActivity(new Intent(getApplicationContext() , HomeActivity.class));
+                    manager.putStrin("USER" ,"LOGIN");
 
-                }else {
+                    Intent intent = new Intent(getApplicationContext() , HomeActivity.class);
 
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                    if (mobile.getText().toString().equalsIgnoreCase("6280445086") && password.getText().toString().equalsIgnoreCase("qwerty")) {
+                    startActivity(intent);
 
-                        manager.putStrin("USER", "LOGIN");
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                }else{
 
-
-                    } else {
-
-                        Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_SHORT).show();
 
                     }
                 }

@@ -25,16 +25,32 @@
                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                        <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
                            android:drawableTint="@color/whiteColor"
                            android:gravity="center|start"
                            android:text="Members"
                            android:textColor="@color/whiteColor"
                            android:textSize="@dimen/_17ssp"
                            />
+
+                   <TextView
+                       android:id="@+id/logout"
+                       android:layout_width="wrap_content"
+                       android:layout_height="match_parent"
+                       android:drawableTint="@color/whiteColor"
+                       android:gravity="center|start"
+                       android:text="Logout"
+                       android:layout_alignParentRight="true"
+                       android:textColor="@color/whiteColor"
+                       android:textSize="@dimen/_17ssp"
+                      android:paddingEnd="@dimen/_10sdp"
+                       />
+                    </RelativeLayout>
 
 
                </android.support.v7.widget.Toolbar>
