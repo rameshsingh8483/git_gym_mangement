@@ -88,9 +88,6 @@ public class AddMemberFragment extends Fragment {
 
         clickListener() ;
 
-
-
-
         return  view ;
 
     }
@@ -290,8 +287,7 @@ public class AddMemberFragment extends Fragment {
 
         String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
 
-        String clicked_date = join_date.getText().toString();
-        String str_year , str_month,str_day;
+         String str_year , str_month,str_day;
 
 //        if(clicked_date.isEmpty()) {
 //
@@ -312,6 +308,8 @@ public class AddMemberFragment extends Fragment {
 
         syear = Integer.parseInt(str_year);
         smonth = Integer.parseInt(str_month);
+        smonth = smonth - 1 ;
+
         sday = Integer.parseInt(str_day);
 
 //        }
@@ -328,7 +326,8 @@ public class AddMemberFragment extends Fragment {
                 String strday;
 
 
-                int mon = monthOfYear + 1 ;
+                int mon = monthOfYear + 1   ;
+
                 if (mon < 10){
                     strmonth = "0"+mon ;
 
@@ -438,6 +437,7 @@ public class AddMemberFragment extends Fragment {
 
                 User user = new User();
                 user.setUid(new Random().nextInt());
+
                 user.setName(name.getText().toString());
                 user.setAddress(address.getText().toString());
                 user.setPhone(phone.getText().toString());
@@ -451,7 +451,7 @@ public class AddMemberFragment extends Fragment {
                 user.setPayfull_fees_date(payFeesFullDate) ;
                 user.setIs_deleted("0");
 
-                userService.insertAll(user);
+                userService.insertAll(user)  ;
                 users = userService.getAll();
 
 

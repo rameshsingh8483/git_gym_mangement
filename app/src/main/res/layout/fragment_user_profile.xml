@@ -107,10 +107,14 @@
 
                 />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+
+
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"
@@ -121,10 +125,12 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"
@@ -136,7 +142,9 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,10 +156,12 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/join_date"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"
@@ -163,10 +173,12 @@
                 app:met_singleLineEllipsis="true" />
 
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/pay_fees_date"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"
@@ -178,7 +190,9 @@
                 app:met_singleLineEllipsis="true" />
 
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -189,10 +203,12 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_15ssp" />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/full_fees"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"
@@ -204,10 +220,12 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/pay_fees"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"
@@ -219,10 +237,12 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-            <TextView
+           <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
                 android:id="@+id/pending_fees"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center|start"

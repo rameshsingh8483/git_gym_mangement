@@ -20,6 +20,9 @@ public interface UserService {
 
     List<User> getAllDelete();
 
+
+    List<User> getUserByid(int [] userIds);
+
     void insertAll(User... users);
 
 

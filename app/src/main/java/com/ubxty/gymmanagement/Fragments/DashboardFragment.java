@@ -289,6 +289,7 @@ public class DashboardFragment extends Fragment {
                 }else {
 
 
+
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
                     // intent.putExtra("ModalList", (Serializable) users);
                     intent.putExtra("data" , "4") ;
@@ -337,7 +338,7 @@ public class DashboardFragment extends Fragment {
 
                     long  day = Utility.getDaysBetweenDates(user.getPayfull_fees_date()) ;
 
-                    if (day > -7 && day  < 0 ){
+                    if (day > 23){
 
                         expWeeklist.add(user) ;
 

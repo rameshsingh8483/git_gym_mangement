@@ -1,6 +1,7 @@
 package com.ubxty.gymmanagement.Fragments;
 
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -34,6 +35,7 @@ import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -66,6 +68,7 @@ public class UserProfileFragment extends Fragment {
 
         findViewById() ;
 
+        getUsersFromDB() ;
 
 
         clickListener() ;
@@ -79,7 +82,9 @@ public class UserProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        setData() ;
+        getUsersFromDB() ;
+
+        //setData() ;
 
     }
 
@@ -88,43 +93,6 @@ public class UserProfileFragment extends Fragment {
 
 
 
-        speedDialView.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
-            @Override
-            public boolean onActionSelected(SpeedDialActionItem speedDialActionItem) {
-                switch (speedDialActionItem.getId()) {
-                    case R.id.add_member:
-
-
-                        //userService = new UserServiceImpl(getActivity());
-
-                        new DeleteMember().execute() ;
-
-
-                        break;
-
-                    case R.id.phone:
-
-
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone.getText().toString(), null));
-                        startActivity(intent);
-
-                        break;
-
-
-                    case  R.id.pay_fees :
-
-                        payfeesDialog() ;
-
-                        break ;
-
-
-                    default:
-                        return false;
-                }
-
-                return  true ;
-            }
-        });
 
 
 
@@ -257,10 +225,6 @@ public class UserProfileFragment extends Fragment {
             }
         });
 
-
-
-
-
     }
 
 
@@ -292,6 +256,7 @@ public class UserProfileFragment extends Fragment {
 
         syear = Integer.parseInt(str_year);
         smonth = Integer.parseInt(str_month);
+        smonth = smonth - 1 ;
         sday = Integer.parseInt(str_day);
 
 //        }
@@ -338,6 +303,7 @@ public class UserProfileFragment extends Fragment {
 
 
 
+
     private void setData() {
 
 
@@ -356,17 +322,121 @@ public class UserProfileFragment extends Fragment {
             pay_fees_date.setText("" + user.getPayfull_fees_date());
 
 
-        }else{
+        }else {
 
             pay_fees_date.setText("2019-01-01");
 
+
         }
+
+            speedDialView.addActionItem(
+                    new SpeedDialActionItem.Builder( R.id.pay_fees , R.drawable.delete)
+                            .create()
+
+
+            );
+            speedDialView.addActionItem(
+                    new SpeedDialActionItem.Builder( R.id.collapseActionView, R.drawable.ic_telephone)
+                            .create()
+
+
+            );
+
+        if (user.getPayFees_status().equalsIgnoreCase("0")){
+
+            speedDialView.addActionItem(
+                    new SpeedDialActionItem.Builder( R.id.beginning, R.drawable.ic_pay)
+                            .create()
+
+
+            );
+
+
+        }
+
+
+
+
+        speedDialView.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
+            @Override
+            public boolean onActionSelected(SpeedDialActionItem speedDialActionItem) {
+                switch (speedDialActionItem.getId()) {
+                    case R.id.pay_fees :
+
+
+                        //userService = new UserServiceImpl(getActivity());
+
+                        new DeleteMember().execute() ;
+
+
+                        break;
+
+                    case R.id.collapseActionView :
+
+
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone.getText().toString(), null));
+                        startActivity(intent);
+
+                        break;
+
+
+                    case  R.id.beginning  :
+
+                        payfeesDialog() ;
+
+                        break ;
+
+
+                    default:
+                        return false;
+                }
+
+                return  true ;
+            }
+        });
+
+
+
+
 
     }
 
+
+    private void getUsersFromDB() {
+
+
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+
+
+                int[] s = {getArguments().getInt("userData")} ;
+
+                List<User> users = userService.getUserByid(s);
+
+                user = users.get(0) ;
+                Log.e("AsyncTask","users" + users.size()) ;
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void agentsCount) {
+                //usersTextView.setText("Users \n\n " + users);
+
+                setData() ;
+
+
+            }
+        }.execute();
+
+    }
+
+
     private void findViewById() {
 
-        user = (User) getArguments().getSerializable("userData");
+
         btn_call = view.findViewById(R.id.btn_call) ;
         iv_user = view.findViewById(R.id.iv_user) ;
         name = view.findViewById(R.id.name) ;
@@ -378,34 +448,10 @@ public class UserProfileFragment extends Fragment {
         pending_fees = view.findViewById(R.id.pending_fees) ;
         pay_fees_date = view.findViewById(R.id.pay_fees_date) ;
 
+        speedDialView = view.findViewById(R.id.speedDial);
         userService = new UserServiceImpl(getActivity());
 
 
-        speedDialView = view.findViewById(R.id.speedDial);
-        speedDialView.addActionItem(
-                new SpeedDialActionItem.Builder( R.id.add_member, R.drawable.delete)
-                        .create()
-
-
-        );
-        speedDialView.addActionItem(
-                new SpeedDialActionItem.Builder( R.id.phone, R.drawable.ic_telephone)
-                        .create()
-
-
-        );
-
-        if (user.getPayFees_status().equalsIgnoreCase("0")){
-
-            speedDialView.addActionItem(
-                    new SpeedDialActionItem.Builder( R.id.pay_fees, R.drawable.ic_pay)
-                            .create()
-
-
-            );
-
-
-        }
 
 
 

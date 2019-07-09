@@ -183,7 +183,9 @@ public class MemberFragment extends Fragment {
                 public void onClick(View view) {
 
                     Bundle bundle = new Bundle() ;
-                    bundle.putSerializable("userData" , list.get(position));
+                    bundle.putInt("userData" ,list.get(position).getUid() );
+
+                    //bundle.putSerializable("userData" , list.get(position).getUid());
                     UserProfileFragment fragment = new UserProfileFragment() ;
                     fragment.setArguments(bundle) ;
                     ((HomeActivity)getActivity()).loadFragment(fragment , true , "UserProfileFragment");

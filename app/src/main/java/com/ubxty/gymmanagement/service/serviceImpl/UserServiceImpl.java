@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getUserByid(int[] userIds) {
+        return userDao.loadAllByIds(userIds) ;
+    }
+
+    @Override
     public void insertAll(User... users) {
         userDao.insertAll(users) ;
 

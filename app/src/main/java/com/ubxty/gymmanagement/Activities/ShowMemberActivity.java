@@ -155,7 +155,6 @@ public class ShowMemberActivity extends AppCompatActivity {
     private void setAdapter() {
 
 
-
         RecycleMember recycleMember = new RecycleMember(list) ;
         recView.setAdapter(recycleMember) ;
 
@@ -184,7 +183,7 @@ public class ShowMemberActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull Holder holder, int position) {
+        public void onBindViewHolder(@NonNull Holder holder, final int position) {
 
 
             holder.name.setText(list.get(position).getName()) ;
@@ -193,6 +192,19 @@ public class ShowMemberActivity extends AppCompatActivity {
 
             Glide.with(getApplicationContext()).load(list.get(position).getProfile_image()).into(holder.profile_image);
 
+            holder.lin_root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent= new Intent(getApplicationContext() , HomeActivity.class) ;
+
+                    Log.w("dddssd","UIDDDD" + list.get(position) .getUid()) ;
+                    intent.putExtra("UID",list.get(position).getUid()) ;
+
+                    startActivity(intent) ;
+
+                }
+            });
 
         }
 

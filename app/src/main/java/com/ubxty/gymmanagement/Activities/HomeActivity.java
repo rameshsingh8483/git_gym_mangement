@@ -25,6 +25,7 @@ import com.ubxty.gymmanagement.Fragments.AddMemberFragment;
 import com.ubxty.gymmanagement.Fragments.DashboardFragment;
 import com.ubxty.gymmanagement.Fragments.GymFragment;
 import com.ubxty.gymmanagement.Fragments.MemberFragment;
+import com.ubxty.gymmanagement.Fragments.UserProfileFragment;
 import com.ubxty.gymmanagement.MainActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.PathUtil;
@@ -48,10 +49,34 @@ public class HomeActivity extends AppCompatActivity implements  DashboardFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        findViewById();
+         if (getIntent().getStringExtra("UID") !=null){
 
-        initTab();
-        setListeners();
+            String s = getIntent().getStringExtra("UID") ;
+
+
+             Integer myIntegerObject = new Integer(s);
+
+
+            //int id = Integer.parseInt(s) ;
+
+            Bundle bundle = new Bundle() ;
+            bundle.putInt("userData" , myIntegerObject );
+
+            //bundle.putSerializable("userData" , list.get(position).getUid());
+            UserProfileFragment fragment = new UserProfileFragment() ;
+            fragment.setArguments(bundle) ;
+            loadFragment(fragment , true , "UserProfileFragment");
+
+
+        }else {
+
+
+            findViewById();
+
+            initTab();
+
+            setListeners();
+        }
 
     }
 
