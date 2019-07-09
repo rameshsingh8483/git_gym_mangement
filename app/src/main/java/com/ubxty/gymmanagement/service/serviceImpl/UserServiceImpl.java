@@ -31,6 +31,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getAllDelete() {
+
+
+        return userDao.getAllDelete() ;
+    }
+
+    @Override
     public void insertAll(User... users) {
         userDao.insertAll(users) ;
 

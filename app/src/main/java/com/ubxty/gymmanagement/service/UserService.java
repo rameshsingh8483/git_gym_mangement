@@ -18,6 +18,8 @@ public interface UserService {
 
     List<User> getAll();
 
+    List<User> getAllDelete();
+
     void insertAll(User... users);
 
 

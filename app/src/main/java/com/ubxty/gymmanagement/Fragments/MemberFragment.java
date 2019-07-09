@@ -266,9 +266,8 @@ public class MemberFragment extends Fragment {
             public void onClick(View view) {
 
                 user.setIs_deleted("1") ;
-                getUsersFromDB() ;
 
-
+                updateUser(user) ;
                 dialog.dismiss() ;
 
             }
@@ -288,6 +287,30 @@ public class MemberFragment extends Fragment {
 
 
 
+
+    }
+
+
+    private void updateUser(final User user) {
+
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                userService.updateUsers(user) ;
+                users = userService.getAll();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void agentsCount) {
+                //usersTextView.setText("Users \n\n " + users);
+
+                setAdapter() ;
+
+
+            }
+        }.execute();
 
     }
 

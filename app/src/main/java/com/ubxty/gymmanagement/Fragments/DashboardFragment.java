@@ -51,6 +51,7 @@ public class DashboardFragment extends Fragment {
     File[]  files ;
 
     private List<User> users = new ArrayList<>();
+    private List<User> delete_users = new ArrayList<>();
     List<User> allList = new ArrayList<>() ;
     List<User> monthRegisterlist = new ArrayList<>() ;
     List<User> expWeeklist = new ArrayList<>() ;
@@ -140,7 +141,9 @@ public class DashboardFragment extends Fragment {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                users = userService.getAll();
+                users = userService.getAll() ;
+                DeleteList = userService.getAllDelete() ;
+
                 monthRegisterlist = userService.thisMonthUser(Utility.currentMonthYear());
                 return null;
             }
@@ -151,6 +154,11 @@ public class DashboardFragment extends Fragment {
 
                 totol_acc.setText("( "+users.size()+" )");
 
+                if (DeleteList.size() > 0){
+
+                    delete_member_count.setText("( "+DeleteList.size()+" )");
+
+                }
 
                 setData();
 
@@ -172,12 +180,10 @@ public class DashboardFragment extends Fragment {
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
 
                 }else {
-
                     Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    intent.putExtra("ModalList", (Serializable) DeleteList);
-                    intent.putExtra("type" , "delete") ;
+                    // intent.putExtra("ModalList", (Serializable) fullPayList);
+                    intent.putExtra("data" , "7") ;
                     startActivity(intent);
-
                 }
 
             }
@@ -306,7 +312,7 @@ public class DashboardFragment extends Fragment {
             expMonthlist.clear();
             fullPayList.clear();
             halfPayList.clear();
-            DeleteList.clear();
+
 
             boolean fullFees = false ;
 

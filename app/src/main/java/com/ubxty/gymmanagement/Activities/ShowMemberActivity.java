@@ -71,7 +71,12 @@ public class ShowMemberActivity extends AppCompatActivity {
 
                     list = userService.getAll() ;
 
-                }else if (data.equalsIgnoreCase("2")){
+                }
+                if (data.equalsIgnoreCase("7")){
+
+                    list = userService.getAllDelete() ;
+
+                } else if (data.equalsIgnoreCase("2")){
 
                     list = userService.thisMonthUser(Utility.currentMonthYear()) ;
 
