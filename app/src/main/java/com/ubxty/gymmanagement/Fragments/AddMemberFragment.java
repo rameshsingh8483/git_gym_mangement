@@ -430,6 +430,7 @@ public class AddMemberFragment extends Fragment {
                 user.setJoin_month(Utility.currentMonthYear());
                 user.setPayFees_status(payFeesFlag) ;
                 user.setPayfull_fees_date(payFeesFullDate) ;
+                user.setIs_deleted("0");
 
                 userService.insertAll(user);
                 users = userService.getAll();

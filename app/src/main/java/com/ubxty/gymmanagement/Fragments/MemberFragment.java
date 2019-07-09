@@ -1,7 +1,10 @@
 package com.ubxty.gymmanagement.Fragments;
 
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,9 +13,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -184,12 +190,19 @@ public class MemberFragment extends Fragment {
 
 
 
+                }
+            });
 
 
+            holder.lin_root.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
 
 
+                    longPressDialog(list.get(position)) ;
 
 
+                    return false;
                 }
             });
 
@@ -222,8 +235,61 @@ public class MemberFragment extends Fragment {
 
     }
 
+    private void longPressDialog(final User user) {
+
+        TextView delete , contact ;
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.long_press_dialog);
 
 
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.dimAmount = 0f;
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT ;
+        lp.gravity = Gravity.CENTER;
+
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        dialog.show();
+
+        delete = dialog.findViewById(R.id.delete)  ;
+        contact = dialog.findViewById(R.id.contact)  ;
+
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                user.setIs_deleted("1") ;
+                getUsersFromDB() ;
+
+
+                dialog.dismiss() ;
+
+            }
+        });
+
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", user.getPhone() , null)) ;
+                startActivity(intent);
+                dialog.dismiss();
+
+
+            }
+        });
+
+
+
+
+    }
 
 
 }

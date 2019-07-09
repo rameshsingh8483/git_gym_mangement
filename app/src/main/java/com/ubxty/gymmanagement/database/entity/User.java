@@ -51,6 +51,19 @@ public class User implements Serializable {
     private String payfull_fees_date;
 
 
+
+    @ColumnInfo(name = "is_deleted")
+    private String is_deleted;
+
+
+    public String getIs_deleted() {
+        return is_deleted;
+    }
+
+    public void setIs_deleted(String is_deleted) {
+        this.is_deleted = is_deleted;
+    }
+
     public String getPayfull_fees_date() {
         return payfull_fees_date;
     }

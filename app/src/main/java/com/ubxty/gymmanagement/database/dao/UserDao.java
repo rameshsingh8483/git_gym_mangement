@@ -16,7 +16,11 @@ import java.util.List;
 public interface UserDao {
 
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM user WHERE is_deleted = 1")
+    List<User> getAllDelete();
+
+
+    @Query("SELECT * FROM user WHERE is_deleted = 0")
     List<User> getAll();
 
     @Query("SELECT * FROM user WHERE uid IN (:userIds)")

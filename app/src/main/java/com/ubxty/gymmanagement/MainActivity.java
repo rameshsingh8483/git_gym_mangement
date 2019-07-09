@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
      Button login;
 
      SessionManager manager  ;
+     boolean loginFlag = true ;
 
 
     @Override
@@ -59,15 +60,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mobile.getText().toString().equalsIgnoreCase("6280445086")&& password.getText().toString().equalsIgnoreCase("qwerty")){
+                if (loginFlag){
 
-                    manager.putStrin("USER" ,"LOGIN");
                     startActivity(new Intent(getApplicationContext() , HomeActivity.class));
 
-                }else{
+                }else {
 
-                    Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_SHORT).show();
 
+                    if (mobile.getText().toString().equalsIgnoreCase("6280445086") && password.getText().toString().equalsIgnoreCase("qwerty")) {
+
+                        manager.putStrin("USER", "LOGIN");
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+
+
+                    } else {
+
+                        Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
 
             }
