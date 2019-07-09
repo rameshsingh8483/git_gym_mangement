@@ -60,25 +60,39 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mobile.getText().toString().equalsIgnoreCase("6280608109")&& password.getText().toString().equalsIgnoreCase("qwerty")){
+                if (loginFlag) {
 
-                    manager.putStrin("USER" ,"LOGIN");
-
-                    Intent intent = new Intent(getApplicationContext() , HomeActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
 
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     startActivity(intent);
 
-                }else{
+                } else {
+
+
+                if (mobile.getText().toString().equalsIgnoreCase("6280608109") && password.getText().toString().equalsIgnoreCase("qwerty")) {
+
+                    manager.putStrin("USER", "LOGIN");
+
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    startActivity(intent);
+
+                } else {
 
                     Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_SHORT).show();
 
-                    }
                 }
 
             }
+                }
+
+
         });
     }
 }
