@@ -435,6 +435,7 @@ public class AddMemberFragment extends Fragment {
                 }
 
 
+
                 User user = new User();
                 user.setUid(new Random().nextInt());
                 user.setName(name.getText().toString());

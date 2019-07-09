@@ -1,5 +1,6 @@
 package com.ubxty.gymmanagement.Activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ubxty.gymmanagement.Fragments.MemberFragment;
+import com.ubxty.gymmanagement.Fragments.UserProfileFragment;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
@@ -185,8 +187,6 @@ public class ShowMemberActivity extends AppCompatActivity {
             holder.join_date.setText(list.get(position).getJoindate());
 
             Glide.with(getApplicationContext()).load(list.get(position).getProfile_image()).into(holder.profile_image);
-
-
 
 
         }
