@@ -157,9 +157,6 @@ public class ShowMemberActivity extends AppCompatActivity {
 
         RecycleMember recycleMember = new RecycleMember(list) ;
         recView.setAdapter(recycleMember) ;
-
-
-
     }
 
 
@@ -199,7 +196,7 @@ public class ShowMemberActivity extends AppCompatActivity {
                     Intent intent= new Intent(getApplicationContext() , HomeActivity.class) ;
 
                     Log.w("dddssd","UIDDDD" + list.get(position) .getUid()) ;
-                    intent.putExtra("UID",list.get(position).getUid()) ;
+                    intent.putExtra("UID",""+list.get(position).getUid()) ;
 
                     startActivity(intent) ;
 

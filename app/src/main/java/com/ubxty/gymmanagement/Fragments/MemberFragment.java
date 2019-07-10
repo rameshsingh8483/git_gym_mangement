@@ -28,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.DB.DBHelper;
 import com.ubxty.gymmanagement.R;
+import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
 import com.ubxty.gymmanagement.healperdialog.HelperDialog;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
@@ -46,6 +47,7 @@ public class MemberFragment extends Fragment {
     UserServiceImpl userService ;
 
     private List<User> users = new ArrayList<>();
+    private List<User> payfullfeesUser = new ArrayList<>();
     RecyclerView member_rec ;
 
     FloatingActionButton add_member ;
@@ -122,6 +124,7 @@ public class MemberFragment extends Fragment {
             @Override
             protected Void doInBackground(Void... params) {
                 users = userService.getAll();
+                payfullfeesUser = userService.fullPayUser() ;
                 return null;
             }
 
@@ -130,12 +133,40 @@ public class MemberFragment extends Fragment {
                 //usersTextView.setText("Users \n\n " + users);
 
                 setAdapter() ;
+                updateAllUser() ;
+
 
 
             }
         }.execute();
 
 }
+
+
+
+
+    public void updateAllUser() {
+
+
+    for (User user : payfullfeesUser){
+
+        long  day = Utility.getDaysBetweenDates(user.getPayfull_fees_date()) ;
+
+        Log.w("updateAllUser","day" + day) ;
+
+        if (day > 30){
+
+            user.setPayfull_fees_date("0");
+            user.setPayFees_status("0") ;
+
+
+            updateUser(user , "no") ;
+        }
+    }
+
+
+
+    }
 
     private void setAdapter() {
 
@@ -269,7 +300,7 @@ public class MemberFragment extends Fragment {
 
                 user.setIs_deleted("1") ;
 
-                updateUser(user) ;
+                updateUser(user ,"update") ;
                 dialog.dismiss() ;
 
             }
@@ -293,7 +324,7 @@ public class MemberFragment extends Fragment {
     }
 
 
-    private void updateUser(final User user) {
+    private void updateUser(final User user , final String type) {
 
 
         new AsyncTask<Void, Void, Void>() {
@@ -308,7 +339,10 @@ public class MemberFragment extends Fragment {
             protected void onPostExecute(Void agentsCount) {
                 //usersTextView.setText("Users \n\n " + users);
 
-                setAdapter() ;
+                if (type.equalsIgnoreCase("update")) {
+
+                    setAdapter();
+                }
 
 
             }
