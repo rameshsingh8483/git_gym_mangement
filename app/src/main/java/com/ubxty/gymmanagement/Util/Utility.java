@@ -288,6 +288,10 @@ public static String CurrentDate(){
 
 
     Log.w("Check" ,"data->>"+df.format(dateobj));
+
+    Log.e("CurrentDate",">>>>>>>>>" + df.format(dateobj)) ;
+
+
     return df.format(dateobj);
 
     //System.out.println(df.format(dateobj));
@@ -303,8 +307,6 @@ public static String CurrentDate(){
         Date d2 = new Date(dateStr) ;
 
         Log.w("Date " + d1,d2 + "d2") ;
-
-
 
         return TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
     }

@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ubxty.gymmanagement.Activities.HomeActivity;
-import com.ubxty.gymmanagement.DB.DBHelper;
+
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
@@ -158,9 +158,8 @@ public class MemberFragment extends Fragment {
 
             user.setPayfull_fees_date("0");
             user.setPayFees_status("0") ;
-
-
             updateUser(user , "no") ;
+
         }
     }
 

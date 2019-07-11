@@ -122,7 +122,7 @@ public class UserProfileFragment extends Fragment {
 
     private void payfeesDialog() {
 
-        final EditText full_fees , pay_fees , pending_fees , pay_date  ;
+        final EditText reg_date  ,  full_fees , pay_fees , pending_fees , pay_date  ;
 
         Button btn_submit , btn_cencel ;
 
@@ -145,6 +145,7 @@ public class UserProfileFragment extends Fragment {
 
         dialog.show();
 
+        reg_date = dialog.findViewById(R.id.reg_date) ;
         full_fees = dialog.findViewById(R.id.full_fees) ;
         pay_fees = dialog.findViewById(R.id.pay_fees) ;
         pending_fees = dialog.findViewById(R.id.pending_fees) ;
@@ -155,6 +156,7 @@ public class UserProfileFragment extends Fragment {
         full_fees.setText(""+ user.getTotalfees());
         pay_fees.setText(""+ user.getPayfees());
         pending_fees.setText(""+ user.getPendingfees()) ;
+        reg_date.setText(""+ user.getJoindate()) ;
 
 
         pay_date.setOnClickListener(new View.OnClickListener() {
@@ -321,10 +323,9 @@ public class UserProfileFragment extends Fragment {
 
             pay_fees_date.setText("" + user.getPayfull_fees_date());
 
-
         }else {
 
-            pay_fees_date.setText("2019-01-01");
+            pay_fees_date.setText("Pending yet");
 
 
         }

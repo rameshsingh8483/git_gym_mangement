@@ -263,5 +263,14 @@
    </android.support.v4.widget.NestedScrollView>
 
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
 
 </FrameLayout>

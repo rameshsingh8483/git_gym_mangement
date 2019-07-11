@@ -4,6 +4,7 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+import android.util.Log;
 
 
 import com.ubxty.gymmanagement.database.dao.UserDao;
@@ -23,8 +24,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (appDatabase == null) {
 
             appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-            AppDatabase.class, "inf").build();
+            AppDatabase.class, "user").build();
         }
+
 
         return appDatabase;
     }

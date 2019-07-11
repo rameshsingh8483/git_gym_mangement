@@ -69,6 +69,24 @@
 
 
 
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/reg_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Joining Date"
+        android:inputType="number"
+        android:paddingLeft="@dimen/_10sdp"
+        android:text=""
+        android:focusable="false"
+        android:editable="false"
+        android:backgroundTint="@color/mainColor"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="?colorAccent"
+        app:met_singleLineEllipsis="true" />
+
+
+
+
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/pay_date"

@@ -26,10 +26,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ubxty.gymmanagement.Activities.HomeActivity;
+import com.ubxty.gymmanagement.DB.SessionManager;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
@@ -65,9 +67,11 @@ public class AddMemberFragment extends Fragment {
     byte[] bitmapdata;
 
     HomeActivity activity;
+    ProgressBar progress ;
 
     public static File uploadFile;
     HelperDialog helperDialog ;
+    SessionManager manager ;
 
 
     public AddMemberFragment() {
@@ -82,6 +86,9 @@ public class AddMemberFragment extends Fragment {
         view =  inflater.inflate(R.layout.fragment_add_member, container, false);
         helperDialog = new HelperDialog(getActivity()) ;
         activity = (HomeActivity)getActivity();
+
+         manager = new SessionManager(getActivity()) ;
+
 
 
         findViewById() ;
@@ -166,8 +173,9 @@ public class AddMemberFragment extends Fragment {
 
                     if (checkValidate()) {
 
-
-                        helperDialog.showLoader();
+                        btn_submit.setClickable(false) ;
+                        progress.setVisibility(View.VISIBLE) ;
+                        //helperDialog.showLoader();
 
                         try {
 
@@ -193,10 +201,6 @@ public class AddMemberFragment extends Fragment {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
 
 
             }
@@ -385,6 +389,7 @@ public class AddMemberFragment extends Fragment {
 
     private void findViewById() {
 
+        progress = view.findViewById(R.id.progress ) ;
         name = view.findViewById(R.id.name ) ;
         phone = view.findViewById(R.id.phone) ;
         address = view.findViewById(R.id.address) ;
@@ -398,7 +403,6 @@ public class AddMemberFragment extends Fragment {
         iv_add_image = view.findViewById(R.id.iv_add_image);
         iv_user = view.findViewById(R.id.iv_user);
         ll_add_image= view.findViewById(R.id.ll_add_image);
-
         userService = new UserServiceImpl(getActivity());
 
 
@@ -431,12 +435,23 @@ public class AddMemberFragment extends Fragment {
                     payFeesFullDate  = Utility.CurrentDate() ;
 
 
+
                 }
 
+                int uId  = 1 ;
+                if (manager.getInt() != 0){
 
+                    uId = manager.getInt() ;
+                    uId ++ ;
+
+                }
+               manager.putInt(uId) ;
 
                 User user = new User();
-                user.setUid(new Random().nextInt());
+
+                user.setUid(uId);
+
+                Log.e("setUid",">>>" + user.getUid()) ;
 
                 user.setName(name.getText().toString());
                 user.setAddress(address.getText().toString());
@@ -450,6 +465,7 @@ public class AddMemberFragment extends Fragment {
                 user.setPayFees_status(payFeesFlag) ;
                 user.setPayfull_fees_date(payFeesFullDate) ;
                 user.setIs_deleted("0");
+
 
                 userService.insertAll(user)  ;
                 users = userService.getAll();
@@ -486,8 +502,9 @@ public class AddMemberFragment extends Fragment {
                 Toast.makeText(getContext(), "User created...", Toast.LENGTH_LONG).show();
                 //menRecView.notifyDataSetChanged();
             //    setAdapter();
+                progress.setVisibility(View.GONE);
 
-                helperDialog.dismissLoader() ;
+                //helperDialog.dismissLoader() ;
 
                 ((HomeActivity)getActivity()).loadFragment(new MemberFragment() , false , "MemberFragment");
 
