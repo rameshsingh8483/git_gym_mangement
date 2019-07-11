@@ -116,6 +116,20 @@
           
             />
 
+        <TextView
+            android:id="@+id/join_date"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:hint="Joining Date"
+            android:paddingLeft="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:text=""
+            android:backgroundTint="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="?colorAccent"
+            app:met_singleLineEllipsis="true" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/name"
             android:layout_width="match_parent"
@@ -136,6 +150,7 @@
             android:inputType="phone"
             android:paddingLeft="@dimen/_10sdp"
             android:text=""
+            android:maxLength="10"
             android:backgroundTint="@color/mainColor"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="?colorAccent"
@@ -152,19 +167,7 @@
             app:met_primaryColor="?colorAccent"
             app:met_singleLineEllipsis="true" />
 
-        <TextView
-            android:id="@+id/join_date"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:hint="Joining Date"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_gravity="center"
-            android:gravity="center|start"
-            android:text=""
-            android:backgroundTint="@color/mainColor"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="?colorAccent"
-            app:met_singleLineEllipsis="true" />
+
 
         <TextView
             android:textAllCaps="true"

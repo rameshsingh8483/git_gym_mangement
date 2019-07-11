@@ -107,6 +107,23 @@
 
                 />
 
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:editable="false"
+                android:focusable="false"
+                android:id="@+id/join_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center|start"
+                android:hint="Joining Date"
+                android:paddingLeft="@dimen/_10sdp"
+                android:text=""
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_singleLineEllipsis="true" />
+
            <com.rengwuxian.materialedittext.MaterialEditText
 
 
@@ -156,21 +173,6 @@
                 app:met_primaryColor="?colorAccent"
                 app:met_singleLineEllipsis="true" />
 
-           <com.rengwuxian.materialedittext.MaterialEditText
-                android:editable="false"
-                android:focusable="false"
-                android:id="@+id/join_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/mainColor"
-                android:gravity="center|start"
-                android:hint="Joining Date"
-                android:paddingLeft="@dimen/_10sdp"
-                android:text=""
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorAccent"
-                app:met_singleLineEllipsis="true" />
 
 
            <com.rengwuxian.materialedittext.MaterialEditText

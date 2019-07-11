@@ -103,7 +103,9 @@ public class ShowMemberActivity extends AppCompatActivity {
 
                             long day = TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
 
-                            if (day > -7 && day < 0) {
+                            if (day > 23){
+
+                            //if (day > -7 && day < 0) {
 
                                 list.add(user);
 
@@ -230,9 +232,6 @@ public class ShowMemberActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 
 
 }

@@ -12,6 +12,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,12 +50,16 @@ public class MemberFragment extends Fragment {
     UserServiceImpl userService ;
 
     private List<User> users = new ArrayList<>();
+    private List<User> allusers = new ArrayList<>();
     private List<User> payfullfeesUser = new ArrayList<>();
     RecyclerView member_rec ;
 
     FloatingActionButton add_member ;
     MenRecView menRecView ;
     HelperDialog helperDialog ;
+    EditText et_search ;
+    ImageView iv_close ;
+    TextView no_member ;
 
     public MemberFragment() {
         // Required empty public constructor
@@ -87,6 +94,53 @@ public class MemberFragment extends Fragment {
 
     private void clickListener() {
 
+        iv_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                users.clear();
+                users.addAll(allusers) ;
+                setAdapter();
+
+
+
+            }
+        });
+
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                users.clear() ;
+                for (User user : allusers){
+
+                    if (user.getName().toLowerCase().trim().contains(charSequence.toString().toLowerCase().trim())){
+
+                        users.add(user) ;
+
+
+                    }
+
+
+                }
+
+                setAdapter();
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
         add_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +162,9 @@ public class MemberFragment extends Fragment {
 
     private void findViewById() {
 
+        no_member = view.findViewById(R.id.no_member) ;
+        iv_close = view.findViewById(R.id.iv_close) ;
+        et_search = view.findViewById(R.id.et_search) ;
         add_member = view.findViewById(R.id.add_member) ;
         member_rec = view.findViewById(R.id.member_rec) ;
         member_rec.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -123,7 +180,9 @@ public class MemberFragment extends Fragment {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
+                allusers.clear();
                 users = userService.getAll();
+                allusers.addAll(users) ;
                 payfullfeesUser = userService.fullPayUser() ;
                 return null;
             }
@@ -169,8 +228,18 @@ public class MemberFragment extends Fragment {
 
     private void setAdapter() {
 
-        menRecView  = new MenRecView(users) ;
-        member_rec.setAdapter(menRecView) ;
+        if (users.size() > 0){
+
+            menRecView  = new MenRecView(users) ;
+            member_rec.setAdapter(menRecView) ;
+
+        }else{
+
+            no_member.setVisibility(View.VISIBLE) ;
+
+
+        }
+
 
 
     }

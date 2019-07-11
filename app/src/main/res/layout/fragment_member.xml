@@ -7,12 +7,60 @@
     android:layout_marginBottom="@dimen/_40sdp"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
-    <android.support.v7.widget.RecyclerView
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:hint="search"
+                android:textColor="@color/black"
+
+                />
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:src="@drawable/met_ic_clear"
+                android:layout_gravity="end"
+
+
+                />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/no_member"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Member Avalable"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
+
+
+        <android.support.v7.widget.RecyclerView
         android:id="@+id/member_rec"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
+    </LinearLayout>
 
 
     <android.support.design.widget.FloatingActionButton

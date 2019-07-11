@@ -253,4 +253,25 @@ public class HomeActivity extends AppCompatActivity implements  DashboardFragmen
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1 || getSupportFragmentManager().getBackStackEntryCount() == 0) {
+
+            //confirmLogoutDialog("backpress");
+
+            finish();
+
+
+        } else {
+
+            getSupportFragmentManager().popBackStack();
+
+        }
+
+
+    }
 }
