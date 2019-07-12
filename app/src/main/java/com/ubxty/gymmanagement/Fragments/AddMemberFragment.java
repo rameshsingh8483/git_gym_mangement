@@ -174,8 +174,9 @@ public class AddMemberFragment extends Fragment {
                     if (checkValidate()) {
 
                         btn_submit.setClickable(false) ;
-                        progress.setVisibility(View.VISIBLE) ;
-                        //helperDialog.showLoader();
+//                        progress.setVisibility(View.VISIBLE) ;
+
+                         helperDialog.showLoader();
 
                         try {
 

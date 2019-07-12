@@ -154,11 +154,11 @@ public class DashboardFragment extends Fragment {
 
                 totol_acc.setText("( "+users.size()+" )");
 
-                if (DeleteList.size() > 0){
+
 
                     delete_member_count.setText("( "+DeleteList.size()+" )");
 
-                }
+
 
                 setData();
 
@@ -426,24 +426,32 @@ public class DashboardFragment extends Fragment {
 
 
 
+            month_register.setText("( "+ monthRegisterlist.size()+" )" );
+            exp_weak.setText("( "+ expWeeklist.size()+" )" );
+            exp_month.setText("( "+ expMonthlist.size()+" )" );
+            full_pay_count.setText("( "+fullPayList.size()+" )");
+            half_pay_count.setText("( "+halfPayList.size()+" )");
 
 
-            if(monthRegisterlist.size() > 0){
-                month_register.setText("( "+ monthRegisterlist.size()+" )" );
-            }
 
-            if(expWeeklist.size() > 0){
-                exp_weak.setText("( "+ expWeeklist.size()+" )" );
-            }
-            if(expMonthlist.size() > 0){
-                exp_month.setText("( "+ expMonthlist.size()+" )" );
-            }
 
-            if(fullPayList.size()>0)
-                full_pay_count.setText("( "+fullPayList.size()+" )");
-
-            if(halfPayList.size()>0)
-                half_pay_count.setText("( "+halfPayList.size()+" )");
+//
+//            if(monthRegisterlist.size() > 0){
+//                month_register.setText("( "+ monthRegisterlist.size()+" )" );
+//            }
+//
+//            if(expWeeklist.size() > 0){
+//                exp_weak.setText("( "+ expWeeklist.size()+" )" );
+//            }
+//            if(expMonthlist.size() > 0){
+//                exp_month.setText("( "+ expMonthlist.size()+" )" );
+//            }
+//
+//            if(fullPayList.size()>0)
+//                full_pay_count.setText("( "+fullPayList.size()+" )");
+//
+//            if(halfPayList.size()>0)
+//                half_pay_count.setText("( "+halfPayList.size()+" )");
 
         }catch (Exception ee){
 
