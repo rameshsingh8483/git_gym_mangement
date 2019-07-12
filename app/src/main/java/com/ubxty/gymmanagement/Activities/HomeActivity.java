@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity implements  DashboardFragmen
 
             tablauout.addTab(tablauout.newTab().setText("Members"));
             tablauout.addTab(tablauout.newTab().setText("Dashboard"));
-            tablauout.addTab(tablauout.newTab().setText("Gym"));
+            tablauout.addTab(tablauout.newTab().setText("gym"));
 
             loadFragment(new MemberFragment() , true , "MemberFragment");
 

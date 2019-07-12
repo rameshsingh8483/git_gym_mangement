@@ -59,7 +59,7 @@ public class AddMemberFragment extends Fragment {
     Button btn_submit , btn_cancel ;
     View view ;
 
-    TextView join_date ;
+    EditText join_date ;
     UserServiceImpl userService ;
     public  static ImageView iv_user ,iv_add_image ,ic_camera ;
     public  static  LinearLayout ll_add_image;
@@ -157,7 +157,7 @@ public class AddMemberFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                showCalendar(join_date);
+                showCalendar();
             }
         });
 
@@ -286,7 +286,7 @@ public class AddMemberFragment extends Fragment {
 
     }
 
-    public  void showCalendar(final TextView join_date){
+    public  void showCalendar(){
         int syear , smonth , sday;
 
         String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());

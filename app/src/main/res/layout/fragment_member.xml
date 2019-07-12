@@ -15,7 +15,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp">
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            >
 
 
             <EditText
@@ -23,14 +25,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:hint="search"
+                android:hint="Search"
                 android:textColor="@color/black"
+                android:paddingStart="@dimen/_5sdp"
 
                 />
 
             <ImageView
                 android:id="@+id/iv_close"
-                android:layout_width="@dimen/_20sdp"
+                android:layout_width="@dimen/_25sdp"
                 android:layout_height="match_parent"
                 android:src="@drawable/met_ic_clear"
                 android:layout_gravity="end"

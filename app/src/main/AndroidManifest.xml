@@ -14,14 +14,17 @@
         android:roundIcon="@drawable/ic_gym"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.ShowMemberActivity"></activity>
-        <activity android:name=".Activities.HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.ShowMemberActivity" />
+        <activity android:name=".Activities.HomeActivity" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

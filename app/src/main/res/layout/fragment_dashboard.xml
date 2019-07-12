@@ -43,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:background="#E4EA6D"
+                android:background="#17C5F0"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:background="@color/colorAccent"
+                android:background="#F3AE4E"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                     android:layout_marginTop="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Month Register User"
+                    android:text="Last Month Register"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:textAlignment="center"
@@ -179,7 +179,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:background="#F3AE4E"
+                android:background="@color/colorAccent"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
@@ -229,7 +229,8 @@
 
             <LinearLayout
                 android:id="@+id/lin_exp_month"
-                android:background="@color/gray"
+                android:background=" #581845
+"
                 android:layout_margin="5sp"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -359,9 +360,11 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_margin="5sp"
-                    android:background="#32F017"
+                    android:background="#FF5733"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+
+                    >
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -413,6 +416,7 @@
             >
 
             <android.support.v7.widget.CardView
+                android:visibility="visible"
                 android:layout_margin="5sp"
                 android:layout_width="0sp"
                 android:layout_height="match_parent"

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
      Button login;
 
      SessionManager manager  ;
-     boolean loginFlag = true ;
+     boolean loginFlag = false ;
 
 
     @Override
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
 
 
-                if (mobile.getText().toString().equalsIgnoreCase("6280608109") && password.getText().toString().equalsIgnoreCase("qwerty")) {
+                if (mobile.getText().toString().equalsIgnoreCase("admin") && password.getText().toString().equalsIgnoreCase("admin")) {
 
                     manager.putStrin("USER", "LOGIN");
 
@@ -94,5 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        finish();
     }
 }

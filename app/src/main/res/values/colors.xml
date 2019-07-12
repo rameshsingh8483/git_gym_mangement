@@ -10,4 +10,5 @@
     <color name="menuColor">#9E9E9E</color>
     <color name="black">#000</color>
     <color name="gray">#AEA298</color>
+    <color name="gray_light">#f1eff1</color>
 </resources>

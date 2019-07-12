@@ -4,8 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
 
     tools:context=".Activities.ShowMemberActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableTint="@color/whiteColor"
+                    android:gravity="center|start"
+                    android:text="Members"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/_17ssp"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:drawableTint="@color/whiteColor"
+                    android:gravity="center|start"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Logout"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/_15ssp" />
+            </RelativeLayout>
+
+
+
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+    </LinearLayout>
+    <FrameLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        >
+
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:hint="Search"
+            android:textColor="@color/black"
+            android:paddingStart="@dimen/_5sdp"
+
+            />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/met_ic_clear"
+            android:layout_gravity="end"
+
+
+            />
+
+    </FrameLayout>
+
 
 
 

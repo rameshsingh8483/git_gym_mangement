@@ -38,18 +38,17 @@
                            android:textSize="@dimen/_17ssp"
                            />
 
-                   <TextView
-                       android:id="@+id/logout"
-                       android:layout_width="wrap_content"
-                       android:layout_height="match_parent"
-                       android:drawableTint="@color/whiteColor"
-                       android:gravity="center|start"
-                       android:text="Logout"
-                       android:layout_alignParentRight="true"
-                       android:textColor="@color/whiteColor"
-                       android:textSize="@dimen/_17ssp"
-                      android:paddingEnd="@dimen/_10sdp"
-                       />
+                        <TextView
+                            android:id="@+id/logout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:drawableTint="@color/whiteColor"
+                            android:gravity="center|start"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:text="Logout"
+                            android:textColor="@color/whiteColor"
+                            android:textSize="@dimen/_15ssp" />
                     </RelativeLayout>
 
 

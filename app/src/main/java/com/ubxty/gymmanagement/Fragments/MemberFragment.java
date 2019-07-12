@@ -99,6 +99,7 @@ public class MemberFragment extends Fragment {
             public void onClick(View view) {
                 users.clear();
                 users.addAll(allusers) ;
+                et_search.setText("");
                 setAdapter();
 
 
@@ -232,6 +233,7 @@ public class MemberFragment extends Fragment {
 
             menRecView  = new MenRecView(users) ;
             member_rec.setAdapter(menRecView) ;
+            no_member.setVisibility(View.GONE) ;
 
         }else{
 
