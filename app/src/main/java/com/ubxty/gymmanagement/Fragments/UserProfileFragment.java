@@ -325,7 +325,7 @@ public class UserProfileFragment extends Fragment {
 
         }else {
 
-            pay_fees_date.setText("Pending yet");
+            pay_fees_date.setText("1900/01/01");
 
 
         }

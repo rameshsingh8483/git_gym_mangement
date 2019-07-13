@@ -188,6 +188,8 @@ public class AddMemberFragment extends Fragment {
                             bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
                             bitmapdata = bos.toByteArray();
 
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -504,7 +506,7 @@ public class AddMemberFragment extends Fragment {
             //    setAdapter();
                 progress.setVisibility(View.GONE);
 
-                //helperDialog.dismissLoader() ;
+                helperDialog.dismissLoader() ;
 
                 ((HomeActivity)getActivity()).loadFragment(new MemberFragment() , false , "MemberFragment");
 

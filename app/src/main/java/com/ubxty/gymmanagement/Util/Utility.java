@@ -301,14 +301,14 @@ public static String CurrentDate(){
 
     public static long getDaysBetweenDates(String dateStr){
 
+
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         Date d1 = new Date();
 
-        Date d2 = new Date(dateStr) ;
-
-        Log.w("Date " + d1,d2 + "d2") ;
+        Date d2 = new Date(dateStr);
 
         return TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
+
     }
 
 

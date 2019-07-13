@@ -99,6 +99,7 @@ public class ShowMemberActivity extends AppCompatActivity {
                         if (!user.getPayfull_fees_date().equalsIgnoreCase("0")) {
 
                             Date d1 = new Date();
+
                             Date d2 = new Date(user.getPayfull_fees_date());
 
                             long day = TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());

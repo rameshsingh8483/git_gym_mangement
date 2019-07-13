@@ -207,21 +207,27 @@ public class MemberFragment extends Fragment {
 
     public void updateAllUser() {
 
+        try {
 
-    for (User user : payfullfeesUser){
 
-        long  day = Utility.getDaysBetweenDates(user.getPayfull_fees_date()) ;
+            for (User user : payfullfeesUser) {
 
-        Log.w("updateAllUser","day" + day) ;
+                long day = Utility.getDaysBetweenDates(user.getPayfull_fees_date());
 
-        if (day > 30){
+                Log.w("updateAllUser", "day" + day);
 
-            user.setPayfull_fees_date("0");
-            user.setPayFees_status("0") ;
-            updateUser(user , "no") ;
+                if (day > 30) {
 
+                    user.setPayfull_fees_date("0");
+                    user.setPayFees_status("0");
+                    updateUser(user, "no");
+
+                }
+            }
+        }catch (Exception e){
+
+            e.printStackTrace();
         }
-    }
 
 
 
