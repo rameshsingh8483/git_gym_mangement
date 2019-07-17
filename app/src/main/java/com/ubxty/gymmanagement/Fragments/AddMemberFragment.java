@@ -165,6 +165,19 @@ public class AddMemberFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+                int total = Integer.parseInt(full_fees.getText().toString());
+                int payfees = Integer.parseInt(pay_fees.getText().toString());
+
+                if (total < payfees){
+
+                    Toast.makeText(getContext(), "Enter Correct Fees", Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+
+
+
+
                 if(uploadFile == null){
 
                     Toast.makeText(getContext(),"Please Select Profile Picture !", Toast.LENGTH_LONG).show();

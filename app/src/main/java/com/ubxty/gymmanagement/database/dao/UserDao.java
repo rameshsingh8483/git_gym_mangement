@@ -30,11 +30,11 @@ public interface UserDao {
     User findByName(String name);
 
 
-    @Query("SELECT * FROM user WHERE payfees = totalfees")
+    @Query("SELECT * FROM user WHERE payfees = totalfees AND is_deleted = 0")
     List<User> fullpayUser();
 
 
-    @Query("SELECT * FROM user WHERE payFees_status = 0")
+    @Query("SELECT * FROM user WHERE payFees_status = 0 AND is_deleted = 0")
     List<User> pendingPayUser();
 
 

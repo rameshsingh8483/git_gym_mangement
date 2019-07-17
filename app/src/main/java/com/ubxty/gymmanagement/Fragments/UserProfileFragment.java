@@ -31,6 +31,7 @@ import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
+import com.ubxty.gymmanagement.healperdialog.HelperDialog;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
@@ -53,6 +54,7 @@ public class UserProfileFragment extends Fragment {
     User user ;
     SpeedDialView speedDialView ;
     UserServiceImpl userService ;
+    HelperDialog helperDialog ;
 
 
     public UserProfileFragment() {
@@ -66,9 +68,10 @@ public class UserProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_user_profile, container, false);
 
+         helperDialog  = new HelperDialog(getActivity())  ;
+
         findViewById() ;
 
-        getUsersFromDB() ;
 
 
         clickListener() ;
@@ -181,16 +184,26 @@ public class UserProfileFragment extends Fragment {
             public void onClick(View view) {
 
 
+                if (pay_date.getText().toString().isEmpty()) {
+
+                    Toast.makeText(getContext(), "Please Enter Pay Fees Date", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+
+
+                    helperDialog.showLoader();
+
                 new AsyncTask<Void, Void, Void>() {
                     @Override
                     protected Void doInBackground(Void... params) {
 
                         user.setPayfees(user.getTotalfees());
-                        user.setPendingfees("0") ;
+                        user.setPendingfees("0");
                         user.setPayFees_status("1");
-                        user.setPayfull_fees_date(pay_date.getText().toString()) ;
+                        user.setPayfull_fees_date(pay_date.getText().toString());
 
-                        userService.updateUsers(user) ;
+                        userService.updateUsers(user);
 
                         return null;
                     }
@@ -199,15 +212,21 @@ public class UserProfileFragment extends Fragment {
                     protected void onPostExecute(Void agentsCount) {
                         //usersTextView.setText("Users \n\n " + users);
 
-                        dialog.dismiss() ;
-                        Toast.makeText(getContext() , "Fees Pay Sucessfully", Toast.LENGTH_SHORT).show();
-                        setData() ;
+                        helperDialog.dismissLoader() ;
+                        dialog.dismiss();
+                        Toast.makeText(getContext(), "Fees Pay Sucessfully", Toast.LENGTH_SHORT).show();
+
+
+                        ((HomeActivity)getActivity()).loadFragment(new DashboardFragment() , true , "DashboardFragment");
+
+                       // setData();
 
 
                     }
                 }.execute();
 
 
+            }
 
 
 
@@ -343,7 +362,7 @@ public class UserProfileFragment extends Fragment {
 
             );
 
-        if (user.getPayFees_status().equalsIgnoreCase("0")){
+        if (!user.getPendingfees().equalsIgnoreCase("0")){
 
             speedDialView.addActionItem(
                     new SpeedDialActionItem.Builder( R.id.beginning, R.drawable.ic_pay)
@@ -382,6 +401,7 @@ public class UserProfileFragment extends Fragment {
 
 
                     case  R.id.beginning  :
+
 
                         payfeesDialog() ;
 

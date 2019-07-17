@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import com.google.gson.Gson;
+import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.Activities.ShowMemberActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.TimeUtil;
@@ -180,10 +181,23 @@ public class DashboardFragment extends Fragment {
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
 
                 }else {
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    // intent.putExtra("ModalList", (Serializable) fullPayList);
-                    intent.putExtra("data" , "7") ;
-                    startActivity(intent);
+
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"7");
+
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+
+
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                    // intent.putExtra("ModalList", (Serializable) fullPayList);
+//                    intent.putExtra("data" , "7") ;
+//                    startActivity(intent);
+
+
+
                 }
 
             }
@@ -197,10 +211,19 @@ public class DashboardFragment extends Fragment {
                     Toast.makeText(getContext() , "No Member" , Toast.LENGTH_LONG).show();
                 }else {
 
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                   // intent.putExtra("ModalList", (Serializable) fullPayList);
-                    intent.putExtra("data" , "5") ;
-                    startActivity(intent);
+
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"5");
+
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                   // intent.putExtra("ModalList", (Serializable) fullPayList);
+//                    intent.putExtra("data" , "5") ;
+//                    startActivity(intent);
                 }
 
             }
@@ -215,10 +238,19 @@ public class DashboardFragment extends Fragment {
 
                 }else {
 
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    //intent.putExtra("ModalList", (Serializable) halfPayList);
-                    intent.putExtra("data" , "6") ;
-                    startActivity(intent);
+
+
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"6");
+
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                    //intent.putExtra("ModalList", (Serializable) halfPayList);
+//                    intent.putExtra("data" , "6") ;
+//                    startActivity(intent);
                 }
 
 
@@ -236,10 +268,19 @@ public class DashboardFragment extends Fragment {
 
                 }else {
 
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                   // intent.putExtra("ModalList", (Serializable) users);
-                    intent.putExtra("data" , "1") ;
-                    startActivity(intent);
+
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"1");
+
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+//
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                   // intent.putExtra("ModalList", (Serializable) users);
+//                    intent.putExtra("data" , "1") ;
+//                    startActivity(intent);
                 }
 
 
@@ -255,9 +296,18 @@ public class DashboardFragment extends Fragment {
 
                 }else {
 
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    intent.putExtra("data" , "2") ;
-                    startActivity(intent);
+
+
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"2");
+
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                    intent.putExtra("data" , "2") ;
+//                    startActivity(intent);
                 }
 
             }
@@ -271,10 +321,17 @@ public class DashboardFragment extends Fragment {
                 }else {
 
 
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    // intent.putExtra("ModalList", (Serializable) users);
-                    intent.putExtra("data" , "3") ;
-                    startActivity(intent);
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"3");
+
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                    // intent.putExtra("ModalList", (Serializable) users);
+//                    intent.putExtra("data" , "3") ;
+//                    startActivity(intent);
 
                 }
             }
@@ -289,11 +346,18 @@ public class DashboardFragment extends Fragment {
                 }else {
 
 
+                    DashBoardMemberFragment fragment = new DashBoardMemberFragment() ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putString("data" ,"4");
 
-                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
-                    // intent.putExtra("ModalList", (Serializable) users);
-                    intent.putExtra("data" , "4") ;
-                    startActivity(intent);
+                    fragment.setArguments(bundle) ;
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "DashBoardMemberFragment");
+
+
+//                    Intent intent = new Intent(getContext(), ShowMemberActivity.class);
+//                    // intent.putExtra("ModalList", (Serializable) users);
+//                    intent.putExtra("data" , "4") ;
+//                    startActivity(intent);
 //
 //
 

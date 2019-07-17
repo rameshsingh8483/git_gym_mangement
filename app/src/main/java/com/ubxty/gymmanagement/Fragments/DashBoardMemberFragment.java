@@ -1,10 +1,11 @@
-package com.ubxty.gymmanagement.Activities;
+package com.ubxty.gymmanagement.Fragments;
+
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,48 +17,57 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.ubxty.gymmanagement.Fragments.MemberFragment;
-import com.ubxty.gymmanagement.Fragments.UserProfileFragment;
+import com.ubxty.gymmanagement.Activities.HomeActivity;
 import com.ubxty.gymmanagement.R;
 import com.ubxty.gymmanagement.Util.Utility;
 import com.ubxty.gymmanagement.database.entity.User;
-import com.ubxty.gymmanagement.modal.AllUser;
 import com.ubxty.gymmanagement.service.serviceImpl.UserServiceImpl;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ShowMemberActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class DashBoardMemberFragment extends Fragment {
 
     RecyclerView recView ;
     List<User> list = new ArrayList<>() ;
 
     String data = "" ;
     UserServiceImpl userService ;
+    View view ;
+
+
+
+    public DashBoardMemberFragment() {
+        // Required empty public constructor
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_member);
-        userService = new UserServiceImpl(getApplicationContext());
-        recView = findViewById(R.id.recView) ;
-        recView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_dash_board_member, container, false);
+
+        userService = new UserServiceImpl(getContext());
+        recView = view.findViewById(R.id.recView) ;
+        recView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        data = getIntent().getStringExtra("data") ;
+        data = getArguments().getString("data") ;
+
 
 
         getUsersFromDB() ;
 
 
+        return view ;
 
     }
-
 
     private void getUsersFromDB() {
 
@@ -106,7 +116,7 @@ public class ShowMemberActivity extends AppCompatActivity {
 
                             if (day > 23){
 
-                            //if (day > -7 && day < 0) {
+                                //if (day > -7 && day < 0) {
 
                                 list.add(user);
 
@@ -124,22 +134,22 @@ public class ShowMemberActivity extends AppCompatActivity {
 
                         if (user.getIs_deleted().equalsIgnoreCase("0")) {
 
-                        if (!user.getPayfull_fees_date().equalsIgnoreCase("0")) {
+                            if (!user.getPayfull_fees_date().equalsIgnoreCase("0")) {
 
-                            Date d1 = new Date();
-                            Date d2 = new Date(user.getPayfull_fees_date());
+                                Date d1 = new Date();
+                                Date d2 = new Date(user.getPayfull_fees_date());
 
-                            long day = TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
+                                long day = TimeUnit.MILLISECONDS.toDays(d1.getTime() - d2.getTime());
 
-                            if (day > -1 && day < 0) {
+                                if (day > -1 && day < 0) {
 
-                                list.add(user);
+                                    list.add(user);
+
+                                }
 
                             }
 
                         }
-
-                    }
                     }
 
                 }
@@ -194,18 +204,31 @@ public class ShowMemberActivity extends AppCompatActivity {
             holder.phone.setText(list.get(position).getPhone());
             holder.join_date.setText(list.get(position).getJoindate());
 
-            Glide.with(getApplicationContext()).load(list.get(position).getProfile_image()).into(holder.profile_image);
+            Glide.with(getActivity()).load(list.get(position).getProfile_image()).into(holder.profile_image);
 
             holder.lin_root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent= new Intent(getApplicationContext() , HomeActivity.class) ;
 
-                    Log.w("dddssd","UIDDDD" + list.get(position) .getUid()) ;
-                    intent.putExtra("UID",""+list.get(position).getUid()) ;
 
-                    startActivity(intent) ;
+                    Bundle bundle = new Bundle() ;
+                    bundle.putInt("userData" , list.get(position).getUid() );
+
+                    //bundle.putSerializable("userData" , list.get(position).getUid());
+                    UserProfileFragment fragment = new UserProfileFragment() ;
+                    fragment.setArguments(bundle) ;
+
+                    ((HomeActivity)getActivity()).loadFragment(fragment , true , "UserProfileFragment");
+
+
+
+//                    Intent intent= new Intent(getContext() , HomeActivity.class) ;
+//
+//                    Log.w("dddssd","UIDDDD" + list.get(position) .getUid()) ;
+//                    intent.putExtra("UID",""+list.get(position).getUid()) ;
+//
+//                    startActivity(intent) ;
 
                 }
             });
@@ -237,6 +260,7 @@ public class ShowMemberActivity extends AppCompatActivity {
         }
 
     }
+
 
 
 }

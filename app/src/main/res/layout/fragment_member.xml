@@ -13,6 +13,21 @@
         android:orientation="vertical"
         >
 
+
+        <TextView
+            android:id="@+id/delete_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="delete All Member"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/black"
+            android:layout_gravity="end"
+            android:gravity="end"
+            />
+
+
+
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"

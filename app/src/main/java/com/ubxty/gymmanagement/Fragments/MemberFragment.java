@@ -59,7 +59,7 @@ public class MemberFragment extends Fragment {
     HelperDialog helperDialog ;
     EditText et_search ;
     ImageView iv_close ;
-    TextView no_member ;
+    TextView no_member , delete_all ;
 
     public MemberFragment() {
         // Required empty public constructor
@@ -93,6 +93,16 @@ public class MemberFragment extends Fragment {
     }
 
     private void clickListener() {
+
+
+        delete_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
 
         iv_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +173,7 @@ public class MemberFragment extends Fragment {
 
     private void findViewById() {
 
+        delete_all = view.findViewById(R.id.delete_all) ;
         no_member = view.findViewById(R.id.no_member) ;
         iv_close = view.findViewById(R.id.iv_close) ;
         et_search = view.findViewById(R.id.et_search) ;
@@ -175,9 +186,6 @@ public class MemberFragment extends Fragment {
 
 
     private void getUsersFromDB() {
-
-
-
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -244,6 +252,7 @@ public class MemberFragment extends Fragment {
         }else{
 
             no_member.setVisibility(View.VISIBLE) ;
+            member_rec.setVisibility(View.GONE);
 
 
         }
@@ -374,6 +383,7 @@ public class MemberFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                helperDialog.showLoader() ;
                 user.setIs_deleted("1") ;
 
                 updateUser(user ,"update") ;
@@ -414,7 +424,7 @@ public class MemberFragment extends Fragment {
             @Override
             protected void onPostExecute(Void agentsCount) {
                 //usersTextView.setText("Users \n\n " + users);
-
+                helperDialog.dismissLoader(); ;
                 if (type.equalsIgnoreCase("update")) {
 
                     setAdapter();
