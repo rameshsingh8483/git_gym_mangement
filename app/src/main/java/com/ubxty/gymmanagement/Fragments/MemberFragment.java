@@ -189,10 +189,19 @@ public class MemberFragment extends Fragment {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                allusers.clear();
-                users = userService.getAll();
-                allusers.addAll(users) ;
-                payfullfeesUser = userService.fullPayUser() ;
+
+                try {
+
+
+                    allusers.clear();
+                    users = userService.getAll();
+                    allusers.addAll(users) ;
+                    payfullfeesUser = userService.fullPayUser() ;
+
+                }catch (Exception ee){
+                    ee.printStackTrace();
+                }
+
                 return null;
             }
 
@@ -220,17 +229,26 @@ public class MemberFragment extends Fragment {
 
             for (User user : payfullfeesUser) {
 
-                long day = Utility.getDaysBetweenDates(user.getPayfull_fees_date());
+                if (!user.getPayfull_fees_date().equalsIgnoreCase("0")){
 
-                Log.w("updateAllUser", "day" + day);
+                    long day = Utility.getDaysBetweenDates(user.getPayfull_fees_date());
 
-                if (day > 30) {
+                    Log.w("updateAllUser", "day" + day);
 
-                    user.setPayfull_fees_date("0");
-                    user.setPayFees_status("0");
-                    updateUser(user, "no");
+                    if (day > 30) {
+
+                        user.setPendingfees("" + user.getTotalfees());
+                        user.setPayfees("0") ;
+
+                        user.setPayfull_fees_date("0");
+                        user.setPayFees_status("0");
+
+                        updateUser(user, "no");
+
+                    }
 
                 }
+
             }
         }catch (Exception e){
 

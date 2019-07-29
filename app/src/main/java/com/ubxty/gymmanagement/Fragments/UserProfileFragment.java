@@ -338,16 +338,6 @@ public class UserProfileFragment extends Fragment {
         pay_fees.setText("" + user.getPayfees()) ;
         pending_fees.setText("" + user.getPendingfees()) ;
 
-        if (user.getPayFees_status().equalsIgnoreCase("1")) {
-
-            pay_fees_date.setText("" + user.getPayfull_fees_date());
-
-        }else {
-
-            pay_fees_date.setText("1900/01/01");
-
-
-        }
 
             speedDialView.addActionItem(
                     new SpeedDialActionItem.Builder( R.id.pay_fees , R.drawable.delete)
@@ -362,7 +352,13 @@ public class UserProfileFragment extends Fragment {
 
             );
 
-        if (!user.getPendingfees().equalsIgnoreCase("0")){
+        if (user.getPayFees_status().equalsIgnoreCase("1")) {
+
+            pay_fees_date.setText("" + user.getPayfull_fees_date());
+
+        }else {
+
+            pay_fees_date.setText("1900/01/01") ;
 
             speedDialView.addActionItem(
                     new SpeedDialActionItem.Builder( R.id.beginning, R.drawable.ic_pay)
@@ -372,10 +368,8 @@ public class UserProfileFragment extends Fragment {
             );
 
 
+
         }
-
-
-
 
         speedDialView.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
             @Override

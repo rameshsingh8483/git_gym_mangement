@@ -448,6 +448,7 @@ public class AddMemberFragment extends Fragment {
                 if (pay_fees.getText().toString().trim().equalsIgnoreCase(full_fees.getText().toString().trim())){
 
                     payFeesFlag = "1" ;
+
                     payFeesFullDate = join_date.getText().toString() ;
                     //payFeesFullDate  = Utility.CurrentDate() ;
 

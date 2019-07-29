@@ -417,17 +417,27 @@ public class DashboardFragment extends Fragment {
                 }
 
 
-                if (user.getTotalfees().equalsIgnoreCase(user.getPayfees())){
+                Log.e("Pendingg","Feessss"+user.getPendingfees()) ;
 
+                if (user.getPendingfees().equalsIgnoreCase("0")){
                     fullPayList.add(user) ;
-                    fullFees = true ;
 
                 }else{
 
                     halfPayList.add(user);
-                    fullFees = false ;
-
                 }
+
+//                if (user.getTotalfees().equalsIgnoreCase(user.getPayfees())){
+//
+//
+//                    fullFees = true ;
+//
+//                }else{
+//
+//                    halfPayList.add(user);
+//                    fullFees = false ;
+//
+//                }
 
 
 

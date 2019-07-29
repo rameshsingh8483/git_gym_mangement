@@ -21,15 +21,16 @@ public abstract class AppDatabase extends RoomDatabase {
      * @return
      */
     public static AppDatabase getInstance(Context context) {
-        if (appDatabase == null) {
 
+
+        if (appDatabase == null) {
             appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-            AppDatabase.class, "user").build();
+            AppDatabase.class, "userTable").build();
         }
 
 
         return appDatabase;
     }
 
-    public abstract UserDao userDao();
+    public abstract UserDao userDao() ;
 }

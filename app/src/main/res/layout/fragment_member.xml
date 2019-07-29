@@ -23,6 +23,7 @@
             android:textColor="@color/black"
             android:layout_gravity="end"
             android:gravity="end"
+            android:visibility="gone"
             />
 
 
